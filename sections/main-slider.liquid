@@ -1,6 +1,6 @@
 <div class="page-width main-slider-section main-slider-{{ section.id }}">
   {%- assign column_blocks = section.blocks | where: 'type', 'column' -%}
-  {%- assign column_count = column_blocks.size -%}
+  {%- assign  column_count = column_blocks.size -%}
 
   <div class="content">
     {%- if section.settings.toggle_categories_button and column_count > 0 -%}
