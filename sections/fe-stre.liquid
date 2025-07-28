@@ -1,0 +1,366 @@
+<link
+  rel="stylesheet"
+  href="{{ 'section-collection-showcase.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'"
+>
+
+{% render 'section-boundaries', section_id: section.id, section_settings: section.settings %}
+{% render 'grid-styles' %}
+<div class="features-section-bg">
+  <div
+    class="collection-list-container  section-{{ section.id }}"
+    style="
+      {% if section.settings.background_type == 'image' and section.settings.background_image != blank %}
+        background-image: url('{{ section.settings.background_image | image_url }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+      {% elsif section.settings.background_type == 'color' %}
+        background-color: {{ section.settings.background_color }};
+      {% endif %}
+    "
+  >
+    {% if section.settings.background_type == 'image'
+      and section.settings.background_image != blank
+      and section.settings.show_overlay
+    %}
+      <span
+        class="background-overlay"
+        style="
+          display:block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: {{ section.settings.overlay_color }};
+          opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+        "
+      ></span>
+    {% endif %}
+    <div class="padding_stylw" style="position: relative; z-index: 2; padding:60px 10px; ">
+      <div class="features-cards-row page-width">
+        {% for block in section.blocks %}
+          <div class="feature-item">
+            <div class="image-wrappper">
+              {% if block.settings.image != blank %}
+                <img
+                  src="{{ block.settings.image | image_url: width: 64 }}"
+                  alt="{{ block.settings.title }}"
+                  loading="lazy"
+                  width="40"
+                  height="40"
+                >
+              {% elsif block.settings.icon != blank %}
+                <img
+                  src="{{ block.settings.icon | image_url: width: 64 }}"
+                  alt="{{ block.settings.title }}"
+                  loading="lazy"
+                  width="40"
+                  height="40"
+                >
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+            <div>
+              <div class="feature-title">{{ block.settings.title }}</div>
+              {% if block.settings.subtitle != blank %}
+                <p class="feature-subtitle">{{ block.settings.subtitle }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  {% comment %} .padding_stylw{
+      padding: 83px 180px;
+  } {% endcomment %}
+    .features-section-bg {
+      position: relative;
+      width: 100%;
+      min-height: 100%;
+    }
+    .features-cards-row {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      justify-items: center;
+      align-items: center;
+      z-index: 2;
+      position: relative;
+      gap: 25px;
+  }
+    @media (max-width: 1300PX){
+      .features-cards-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+    }
+
+    .feature-item {
+      height: 100%;
+      width:290px;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+      padding: 40px 24px 28px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      {% comment %} min-height: 230px;
+      min-width: 291px; {% endcomment %}
+      position: relative;
+      z-index: 2;
+      transition: box-shadow 0.2s;
+    }
+    @media (max-width: 768px) {
+      .feature-item { 
+        width: 100% ;
+      }
+    }
+
+    .feature-item:hover {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
+    }
+    .feature-item .image-wrappper {
+      background: {{ section.settings.image_wrapper_background_color }};
+      border-radius: 50%;
+      width: 72px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .feature-item .image-wrappper img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      display: block;
+    }
+    .feature-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .feature-subtitle {
+      color: #888;
+      font-size: 14px;
+      text-align: center;
+      margin: 0;
+      font-weight: 400;
+    }
+    .background-overlay {
+      z-index: 1;
+      border-radius: 0;
+    }
+    @media (max-width: 600px) {
+      .features-cards-row {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+      }
+      .feature-title {
+        font-size: 14px;
+        font-weight:600;
+      }
+      .feature-subtitle {
+        font-size: 12px;
+        font-weight:300;
+      }
+    }
+</style>
+
+{%- schema -%}
+{
+  "name": "Features2",
+  "tag": "section",
+  "class": "section section-collection-showcase-card",
+  "max_blocks": 15,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background Settings"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Background Type",
+      "options": [
+        { "value": "color", "label": "Color" },
+        { "value": "image", "label": "Image" }
+      ],
+      "default": "color"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Overlay Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "Show Overlay",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on Desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "2",
+      "label": "Columns on Mobile",
+      "options": [{ "value": "2", "label": "2" }]
+    },
+    {
+      "type": "range",
+      "id": "space_between",
+      "label": "Space Between Items",
+      "min": 1,
+      "max": 40,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Title Settings"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "options": [
+        {
+          "value": "h0",
+          "label": "H0"
+        },
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h6",
+      "label": "Title Size"
+    },
+    {
+      "type": "text",
+      "id": "title_lineheight",
+      "label": "Title Line Height",
+      "default": "1.5"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#001e2b"
+    },
+    {
+      "type": "color",
+      "id": "image_wrapper_background_color",
+      "label": "Image Wrapper Background Color",
+      "default": "#f4f8f6"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Feature description goes here",
+          "info": "Max 21 characters"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
+}
+{%- endschema -%}

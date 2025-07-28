@@ -1,0 +1,62 @@
+{% if section.settings.enable_banner %}
+  {% if section.settings.banner_image %}
+    <header
+      class="collection-page-header "
+      style="border-radius: 4px; background: url({{ section.settings.banner_image | image_url: width: 1100 }}) no-repeat center center / cover;">
+      <div class="con ">
+        <h2
+          class="collection-page-header__title "
+          style="color: {{ section.settings.title_color }};">
+          {{ section.settings.title }}
+        </h2>
+        {%- if  section.settings.button_link  -%}
+          <a
+            href="{{ section.settings.button_link }}"
+            class="btn-banner"
+            style="
+              padding: 6px 21px;
+              border-radius: 3px;
+              background-color: {{ section.settings.button_bg_color }};
+              color: {{ section.settings.button_text_color }};" >
+            {{ section.settings.button_text }}
+          </a>  
+        {%- endif -%}
+      </div>
+    </header>
+  {% endif %}
+{% endif %}
+<style>
+  .collection-page-header__title {
+    width: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .footer__content-top.page-width {
+    overflow: hidden;
+  }
+  .con {
+    padding: 58px 181px 112px 86px;
+  }{% comment %} 
+  [lang="ar"] .con {
+    padding: 58px 86px 112px 181px;
+  } {% endcomment %}
+  @media (max-width: 768px) {
+    .collection-page-header__title {
+      width: unset;
+    }
+    .con {
+      padding: 30px;
+      width: 75%;
+    }
+    .collection-page-header__title {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .btn-banner {
+      font-size: 14px;
+    }
+    .con {
+    padding: 20px; 
+  }
+  }
+</style>

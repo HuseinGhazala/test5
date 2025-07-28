@@ -1,0 +1,176 @@
+<section class="page-width brands-{{ section.id }} brands  color-{{ section.settings.color_scheme }}">
+  <div>
+    <h3 class="title">{{ section.settings.title }}</h3>
+
+    <div class="slider_container">
+      <div class="swiper swiper_brand">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% if block.settings.btnlink != blank %}
+              {% assign btnlink = block.settings.btnlink %}
+            {% else %}
+              {% assign btnlink = shop.secure_url %}
+            {% endif %}
+
+            <div class="swiper-slide h-full" style=" height: 100%;">
+              <a href="{{ btnlink }}" class="rounded brand_slide h-full" style=" height: 100%;">
+                {% if block.settings.img != blank %}
+                  <img
+                    src="{{ block.settings.img | image_url: width: 450 }}"
+                    width="80"
+                    height="60"
+                    alt=""
+                    class="object-cover h-full img_slide"
+                  >
+                {% endif %}
+
+                {% if block.settings.title != blank %}
+                  <h3 class="head">{{ block.settings.title }}</h3>
+                {% endif %}
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .brands .brand_slide{
+      border: 1px solid  {{section.settings.broder_color}};
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      min-height: 100px;
+  }
+  .brands .title {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: center;
+  }
+  .brands .head{
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      margin-top: 10px;
+  }
+  .brands .img_slide{
+      margin-top: 10px;
+      max-width: 80px;
+      max-height: 60px;
+      flex: 1;
+      object-fit: contain;
+  }
+  @media(min-width:767px){
+      .brands .head{
+          font-size: 15 px;
+          margin-top: 20px;
+
+      }
+      .brands .title {
+          font-size: 28px;
+      }
+      .brands .brand_slide{
+        padding: 20px 20px;
+        min-height: 120px;
+    }
+      .brands .img_slide{
+        margin-top: 10px;
+        max-width: 100px;
+        max-height: 80px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.swiper_brand', {
+      loop: true,
+      spaceBetween: 30,
+      slidesPerView: 2.5,
+      autoplay: true,
+      grabCursor: true,
+      breakpoints: {
+        640: {
+          slidesPerView: 3,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 6,
+          spaceBetween: 30,
+        },
+      },
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.brands.name",
+  "class": "section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.img-banner.settings.title.label",
+      "default": "t:sections.img-banner.settings.title.default"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "broder_color",
+      "label": "Enter color for borded",
+      "default": "#367E18"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "brand",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.brands.settings.title_brand.label",
+          "default": "t:sections.brands.settings.title_brand.default"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "t:sections.brands.settings.img.label",
+          "info": "t:sections.brands.settings.img.info"
+        },
+        {
+          "type": "url",
+          "id": "btnlink",
+          "label": "t:sections.brands.settings.btn_url.label",
+          "info": "t:sections.brands.settings.btn_url.info"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brands",
+      "blocks": [{ "type": "brand" }, { "type": "brand" }, { "type": "brand" }, { "type": "brand" }]
+    }
+  ]
+}
+{% endschema %}

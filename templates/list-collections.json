@@ -10,8 +10,19 @@
 {
   "sections": {
     "main": {
-      "type": "collections",
-      "settings": {}
+      "type": "main-list-collections",
+      "settings": {
+        "page_image": "shopify://shop_images/Frame_2617.png",
+        "is_overlay": true,
+        "title_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "title": "Collection List",
+        "sort": "alphabetical",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "columns_mobile": "2"
+      }
     }
   },
   "order": [

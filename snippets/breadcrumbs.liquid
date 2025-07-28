@@ -1,0 +1,42 @@
+<style>
+  .breadcrumb {
+    font-weight: 500;
+    margin-block: 30px;
+    color: rgb(var(--color-gray-500));
+  }
+
+  .breadcrumb a {
+    text-decoration: none;
+    color: rgb(var(--color-primary));
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: none;
+  }
+
+  .breadcrumb span {
+    color: rgb(var(--color-gray-500));
+    text-transform: capitalize;
+  }
+  .br-title svg {
+    width: 23px;
+    height: 23px;
+  }
+</style>
+
+<nav class="breadcrumb freshcart-breadcrumb page-width">
+  <a href="{{ shop.url }}">{{ 'breadcrumb.home' | t }}</a>
+  {% if template.name == 'product' %}
+    &#62; <a href="{{ collections.all.url }}">{{ 'breadcrumb.products' | t }}</a> &#62; <span>{{ product.title }}</span>
+  {% elsif template.name == 'collection' %}
+    &#62; <span>{{ collection.title }}</span>
+  {% elsif template.name == 'page' %}
+    &#62; <span>{{ page.title }}</span>
+  {% elsif template.name == 'article' %}
+    &#62; <a href="{{ blog.url }}">{{ 'breadcrumb.blog' | t }}</a> &#62; <span>{{ article.title }}</span>
+  {% elsif template.name == '404' %}
+    &#62; <span>{{ 'breadcrumb.404' | t }}</span>
+  {% else %}
+    &#62; <span>{{ 'breadcrumb.collectionlist' | t }}</span>
+  {% endif %}
+</nav>

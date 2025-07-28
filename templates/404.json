@@ -7,11 +7,20 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "main": {
-      "type": "404",
-      "settings": {}
+      "type": "main-404",
+      "settings": {
+        "imageBg": "shopify://shop_images/Group_f5f34ea8-dd28-4eaf-89b6-511d866fb71c.png",
+        "heading": "Page not found.",
+        "sub_title": "Sorry, we couldn't find the page you were looking for. We suggest that you return to the home page.",
+        "img_switch": true,
+        "img": "shopify://shop_images/OOPS_1f10aa5b-9b17-4e7f-8689-d59853f05991.png",
+        "color_scheme": "",
+        "btntext": "GO BACK TO HOME PAGE",
+        "btnlink": ""
+      }
     }
   },
   "order": [

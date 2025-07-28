@@ -1,0 +1,345 @@
+{%- assign collection_length = section.blocks.size -%}
+
+<div class="page-width product-slider-{{ section.id }}">
+  <div class="grid-container" data-length="{{ collection_length }}">
+    {%- if section.settings.btn_url != blank and section.settings.image != blank -%}
+      <a href="{{ section.settings.btn_url }}" class="image-link" aria-label="{{ section.settings.btn_text | escape }}">
+        <div class="image-container">
+          <span class="btn-text">{{ section.settings.btn_text }}</span>
+        </div>
+      </a>
+    {%- endif -%}
+
+    <div class="product-container">
+      {% for block in section.blocks %}
+        {% assign collection = collections[block.settings.product] %}
+        {% if collection.products.size > 0 %}
+          <div class="product-list-container">
+            {%- if block.settings.product_title != blank -%}
+              <div class="product-title-container">
+                <h3 class="product-title">
+                  <span>   
+                    {{ block.settings.product_title }}
+                  </span>
+                </h3>
+              </div>
+            {%- endif -%}
+
+            <div class="product-list">
+              <ul class="swiper-wrapper">
+                {% for product in collection.products %}
+                  <li class="product-item swiper-slide">
+                    {% render 'card-product', card_product: product, horizontal_class: true %}
+                  </li>
+                {% endfor %}
+              </ul>
+
+              <div class="swiper-pagination">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{%- style -%}
+  .product-slider-{{ section.id }} {
+  	overflow: hidden;
+  }
+  .product-slider-{{ section.id }} .card__heading {
+  	font-size: 12px !important;
+  }
+  .product-slider-{{ section.id }} .grid-container {
+  	overflow: visible;
+  	display: grid;
+  	row-gap: 20px;
+  	grid-template-columns: repeat(1, minmax(0, 1fr));
+  	@media (min-width: 768px) {
+  		grid-template-columns: repeat(2, minmax(0, 1fr));
+  		gap: 8px;
+  	}
+  	@media (min-width: 992px) {
+  		grid-template-columns: repeat(3, minmax(0, 1fr));
+  		gap: 16px;
+  	}
+  	@media (min-width: 1250px) {
+  		grid-template-columns: repeat(4, minmax(0, 1fr));
+  		gap: 24px;
+  	}
+  }
+  html[lang="ar"] .product-slider-{{ section.id }} .grid-container {
+  	direction: rtl;
+  }
+  .product-slider-{{ section.id }} .grid-container .image-container {
+  	background: url({{ section.settings.image | image_url: width: 1100 }}) no-repeat center center/cover;
+  	{%- if section.settings.image_mobile != blank -%}
+  		@media (max-width: 768px) {
+  			background: url({{ section.settings.image_mobile | image_url: width: 1100 }}) no-repeat center center/cover;
+  		}
+  	{%- endif -%}
+  	display: flex;
+  	justify-content: center;
+  	align-items: end;
+  	min-height: 175px;
+  	@media (min-width: 480px) {
+  		min-height: 300px;
+  	}
+  	height: 100%;
+  	border-radius: 4px;
+  }
+  .product-slider-{{ section.id }} .grid-container .image-container .btn-text {
+  	background: {{ section.settings.btn_bg_color }};
+  	color: {{ section.settings.btn_text_color }};
+  	margin-bottom: 25px;
+  	padding: 7px 30px;
+  	border-radius: 4px;
+  	@media(max-width: 768px) {
+  		display: none;
+  	}
+  }
+  .product-slider-{{ section.id }} .grid-container .product-container {
+  	display: grid;
+  	grid-template-columns: repeat(1, minmax(0, 1fr));
+  	gap: 0 16px;
+  	@media (min-width: 768px) {
+  		{%- if section.settings.image != blank -%}
+  			grid-column: 2 / -1;
+  		{%- else -%}
+  			grid-column: 1 / -1;
+  		{%- endif -%}
+  	}
+  	@media (min-width: 1250px) {
+  		grid-template-columns: repeat({{ collection_length  }}, minmax(0, 1fr));
+  	}
+  	row-gap: 15px;
+  }
+  .product-slider-{{ section.id }} .grid-container .product-title-container .product-title {
+  	font-size: 20px;
+  	font-weight: 700;
+  	padding-inline: 8px;
+  }
+  .product-slider-{{ section.id }} .grid-container .product-list-container {
+  	display: flex;
+  	flex-direction: column;
+  	position: relative;
+  	max-height: 532px;
+  	gap: 10px;
+  }
+  .product-slider-{{ section.id }} .product-container .product-list {
+  	width: 100%;
+  	overflow: hidden;
+  }
+  .product-slider-{{ section.id }} .product-container .product-list .product-item {
+  	max-height: 130px;
+  	overflow: hidden;
+  }
+  .product-slider-{{ section.id }} .product-container .product-list .product-item .card-wrapper {
+  	height: 98%;
+  }
+  .product-slider-{{ section.id }} .product-container .swiper-pagination {
+  	position: absolute;
+  	top: 3px;
+  	width: 50px;
+  	display: flex;
+  	justify-content: space-between;
+  	right: 0;
+  	z-index: unset;
+  }
+  html[lang="ar"] .product-slider-{{ section.id }} .product-container .swiper-pagination {
+  	left: 0;
+  	right: unset;
+  }
+  .product-slider-{{ section.id }} .swiper-pagination div.swiper-button-prev,
+  .product-slider-{{ section.id }} .swiper-pagination div.swiper-button-next {
+  	inset: unset;
+  	display: flex;
+  	align-items: flex-end;
+  }
+  .product-slider-{{ section.id }} div.swiper-button-prev,
+  .product-slider-{{ section.id }} div.swiper-button-next {
+  	display: block;
+  }
+  .product-slider-{{ section.id }} div.swiper-button-prev::after,
+  .product-slider-{{ section.id }} div.swiper-button-next::after {
+  	font-size: 16px;
+  	background-color: #F2F2F2;
+  	color: #686868;
+  	padding: 4px;
+  }
+  .product-slider-{{ section.id }} div.swiper-button-next {
+  	margin-left: 20px;
+  }
+  html[lang="ar"] .product-slider-{{ section.id }} div.swiper-button-next {
+  	margin-left: 0;
+  	margin-right: 20px;
+  }
+{%- endstyle -%}
+
+{%- javascript -%}
+  document.addEventListener('DOMContentLoaded', () => {
+    // get length of collection and product container to initial swiper and handle responsive
+    const collectionLength = parseInt(document.querySelector('.grid-container').dataset.length);
+    const productContainer = document.querySelector('.product-container');
+    const productList = productContainer.querySelectorAll('.product-list');
+    let isImage = document.querySelector('.image-link') !== null;
+
+    let swipers = []; // Store Swiper instances
+
+    // there is more than one collection ( when user add block ) we need to handle all responsive for this state
+    function handleSlidesPerView(onlyList, twiceList, thirdList) {
+      if (collectionLength === 1) return onlyList;
+      if (collectionLength === 2) return twiceList;
+
+      return thirdList;
+    }
+
+    // handle responsive for rows when user create more than one collection
+    function getGridRows(width) {
+      if (width < 1250) {
+        return collectionLength === 1 ? 3 : collectionLength === 2 ? 2 : 1;
+      }
+      return 4;
+    }
+
+    function initSwipers() {
+      // initialize Swiper instances
+      const currentWidth = window.innerWidth;
+      productList.forEach((list, index) => {
+        // handle each collection
+        const swiper = new Swiper(list, {
+          slidesPerView: 1,
+          centerInsufficientSlides: true,
+          breakpoints: {
+            400: { slidesPerView: 1.25 },
+            580: { slidesPerView: 1.5 },
+            680: { slidesPerView: 1.75 },
+            768: { slidesPerView: 1 },
+            992: { slidesPerView: handleSlidesPerView(2, 1.5, 2) },
+            1200: { slidesPerView: 2.25 },
+            1250: { slidesPerView: handleSlidesPerView(3, 1.5, 1) },
+          },
+          spaceBetween: 16,
+          a11y: false,
+          grid: {
+            rows: getGridRows(currentWidth),
+          },
+          navigation: {
+            nextEl: '.product-list .swiper-button-next',
+            prevEl: '.product-list .swiper-button-prev',
+          },
+        });
+        swipers[index] = swiper;
+      });
+      removeNotifications(); // call function to remove notifications
+    }
+
+    function destroySwipers() {
+      // destroy Swiper instances when resize because swiper not destroy automatically
+      swipers.forEach((swiper) => {
+        if (swiper && swiper.destroy) swiper.destroy(true, true);
+      });
+      swipers = [];
+    }
+
+    function removeNotifications() {
+      // there is a bug in swiper when destroy it, it create notification element when init swiper
+      setTimeout(() => {
+        document.querySelectorAll('.swiper-notification').forEach((el) => el.remove());
+      }, 50);
+    }
+
+    // Debounce function to handle resize events ( to increase performance ) when resize the window
+    function debounce(func, delay = 200) {
+      let timeout;
+      return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+      };
+    }
+
+    let previousWidth = window.innerWidth;
+
+    const handleResize = debounce(() => {
+      // handle resize event not call swiper when any resize
+      const currentWidth = window.innerWidth;
+
+      if (Math.abs(currentWidth - previousWidth) > 50) {
+        destroySwipers();
+        initSwipers();
+        previousWidth = currentWidth;
+      }
+    }, 300);
+
+    window.addEventListener('resize', handleResize);
+
+    initSwipers(); // call function to init swiper first time
+  });
+{%- endjavascript -%}
+
+{% schema %}
+{
+  "name": "Product Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "select image",
+      "id": "image"
+    },
+    {
+      "type": "image_picker",
+      "label": "select image for mobile",
+      "id": "image_mobile"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "btn_url"
+    },
+    {
+      "type": "color",
+      "label": "Button Background Color",
+      "id": "btn_bg_color"
+    },
+    {
+      "type": "color",
+      "label": "Button Text Color",
+      "id": "btn_text_color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Products",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "label": "Products Title",
+          "id": "product_title"
+        },
+        {
+          "type": "collection",
+          "label": "Product Title",
+          "id": "product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Slider"
+    }
+  ]
+}
+{% endschema %}

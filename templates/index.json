@@ -9,12 +9,793 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
+    "main_slider_TzBAbV": {
+      "type": "main-slider",
+      "blocks": {
+        "column_qdFMwx": {
+          "type": "column",
+          "settings": {
+            "collection_id": "collection12"
+          }
+        },
+        "column_Cqib4k": {
+          "type": "column",
+          "settings": {
+            "collection_id": "collection16"
+          }
+        },
+        "column_PqFRPV": {
+          "type": "column",
+          "settings": {
+            "collection_id": "collection17"
+          }
+        },
+        "column_bxHwe4": {
+          "type": "column",
+          "settings": {
+            "collection_id": "collection12"
+          }
+        },
+        "column_3FzxHH": {
+          "type": "column",
+          "settings": {
+            "collection_id": "collection16"
+          }
+        },
+        "column_qzJxMt": {
+          "type": "column",
+          "settings": {
+            "collection_id": "collection16"
+          }
+        },
+        "column_LqChyX": {
+          "type": "column",
+          "settings": {
+            "collection_id": "collection16"
+          }
+        },
+        "slide_hQTexc": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify://shop_images/Group_1_1.png",
+            "slide_image_mobile": "shopify://shop_images/Group_1_2.png",
+            "slide_title": "keep healthy",
+            "slide_description": "Your Journey to Wellness Begins Here.",
+            "slide_button_text": "expore now",
+            "slide_link": "https://hyalthy.myshopify.com",
+            "is_overlay": false,
+            "slide_title_color": "#367e18",
+            "slide_sub_title_color": "#000000",
+            "slide_button_color": "#f8f8f8",
+            "slide_button_bg_color": "#367e18"
+          }
+        },
+        "slide_ErQJUW": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify://shop_images/Group_1_f446e62d-0799-4f80-b0ce-65a8648f89c1.png",
+            "slide_image_mobile": "shopify://shop_images/Frame_2655.png",
+            "slide_title": "keep healthy",
+            "slide_description": "Your Journey to Wellness Begins Here.",
+            "slide_button_text": "explore now",
+            "slide_link": "https://https//:www.google.com",
+            "is_overlay": false,
+            "slide_title_color": "#367e18",
+            "slide_sub_title_color": "#1b1b1b",
+            "slide_button_color": "#f8f8f8",
+            "slide_button_bg_color": "#367e18"
+          }
+        }
+      },
+      "block_order": [
+        "column_qdFMwx",
+        "column_Cqib4k",
+        "column_PqFRPV",
+        "column_bxHwe4",
+        "column_3FzxHH",
+        "column_qzJxMt",
+        "column_LqChyX",
+        "slide_hQTexc",
+        "slide_ErQJUW"
+      ],
+      "name": "main slider",
+      "settings": {
+        "toggle_categories_button": "All categories",
+        "category_item_color": "#000000",
+        "button_background_color": "#367e18",
+        "button_text_color": "#000000"
+      }
+    },
+    "collection_showcase_card_YyGTx6": {
+      "type": "collection-showcase-card",
+      "blocks": {
+        "featured_collection_nHaCD6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "collection12"
+          }
+        },
+        "featured_collection_iRXDwr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "collection12"
+          }
+        },
+        "featured_collection_nTTbBf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "collection16"
+          }
+        },
+        "featured_collection_NAhFwV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "collection13"
+          }
+        },
+        "featured_collection_q3Q87p": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "collection15"
+          }
+        },
+        "featured_collection_M9Bqqw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "collection14"
+          }
+        },
+        "featured_collection_yqFdgm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "collection11"
+          }
+        },
+        "featured_collection_iUFBJa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "collection17"
+          }
+        },
+        "featured_collection_eyJwyF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "collection10"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_nHaCD6",
+        "featured_collection_iRXDwr",
+        "featured_collection_nTTbBf",
+        "featured_collection_NAhFwV",
+        "featured_collection_q3Q87p",
+        "featured_collection_M9Bqqw",
+        "featured_collection_yqFdgm",
+        "featured_collection_iUFBJa",
+        "featured_collection_eyJwyF"
+      ],
+      "name": "t:sections.collection-card.presets.name",
+      "settings": {
+        "layout_type": "container",
+        "display_type": "slider",
+        "show_pagination": false,
+        "columns_desktop": 7,
+        "columns_mobile": "2.5",
+        "space_between": 8,
+        "show_border": false,
+        "border_thickness": 1,
+        "border_color": "#dfe2e1",
+        "border_hover_color": "",
+        "background_color": "#ececec",
+        "background_color_active": "#367e18",
+        "border_radius": 6,
+        "image_width": "157",
+        "image_height": "157",
+        "title_size": "h6",
+        "title_color": "#001e2b"
+      }
+    },
+    "featured_collection_xHj7QW": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "prev",
+        "products_to_show": 5,
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "<p>Get all latest information on events, sales offers risus sollicitudin interdum</p>",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 5,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "horizontal": false,
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "banner_v7_7tyLrF": {
+      "type": "banner-v7",
+      "name": "Banner v2",
+      "settings": {
+        "bg_type": "Image",
+        "bg_color": "",
+        "bg_img": "shopify://shop_images/Frame_2669.png",
+        "hp_countdown": "11-09-2025",
+        "Countdown_color": "#ffffff",
+        "banner_image": "shopify://shop_images/Fresh_mixed_vegetables_falling_into_bowl_1.webp",
+        "text1": "Save",
+        "text1_color": "#ffffff",
+        "text3": "35% Off",
+        "text3_color": "#ffe75e",
+        "show_line": true,
+        "line_color": "#ffe75e",
+        "text2": "Healthy food doesn't have to be boring—discover tasty options!",
+        "text2_color": "#ffffff",
+        "btn_name": "Shop now",
+        "button_url": "shopify://collections/all",
+        "button_text_color": "#367e18",
+        "button_bg_color": "#ffffff"
+      }
+    },
+    "video_n8Unwx": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "video": "shopify://files/videos/0_Grocery_Store_Fruits_1280x720.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "product_slider_4wcxV9": {
+      "type": "product-slider",
+      "blocks": {
+        "slide_xJa8gV": {
+          "type": "slide",
+          "settings": {
+            "product_title": "Featured",
+            "product": "prev"
+          }
+        },
+        "slide_ttgCHQ": {
+          "type": "slide",
+          "settings": {
+            "product_title": "On Sale",
+            "product": "test1"
+          }
+        },
+        "slide_xXkgJ7": {
+          "type": "slide",
+          "settings": {
+            "product_title": "Bestseller",
+            "product": "prev"
+          }
+        }
+      },
+      "block_order": [
+        "slide_xJa8gV",
+        "slide_ttgCHQ",
+        "slide_xXkgJ7"
+      ],
+      "name": "Product Slider",
+      "settings": {
+        "image": "shopify://shop_images/Group_1.png",
+        "image_mobile": "shopify://shop_images/Rectangle_9.png",
+        "btn_text": "Order Now",
+        "btn_url": "https://www.google.com",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#367e18"
+      }
+    },
+    "featured_collection_cmyrXD": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "prev",
+        "products_to_show": 5,
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 5,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "horizontal": false,
+        "show_secondary_image": false,
+        "show_vendor": true,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "square-images": {
+      "type": "square-images",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "Fuel Your Life with Fresh,",
+            "sub_title": "Wholesome Foods",
+            "description": "discover tasty options!",
+            "img": "shopify://shop_images/Frame_2497.png",
+            "btntext": "Shop now",
+            "btnlink": "https://www.youtube.com/",
+            "color_scheme": "scheme-82303b6e-2ff4-41c2-aadd-6f5027c5038c"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "Fuel Your Life with Fresh,",
+            "sub_title": "Wholesome Foods",
+            "description": "discover tasty options!",
+            "img": "shopify://shop_images/Group_1_2.webp",
+            "btntext": "Shop now",
+            "btnlink": "shopify://collections/collection12",
+            "color_scheme": "scheme-542a2484-5511-46b5-8f05-7c5934cea87c"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "Fuel Your Life with Fresh,",
+            "sub_title": "Wholesome Foods",
+            "description": "discover tasty options!",
+            "img": "shopify://shop_images/Frame_2498.png",
+            "btntext": "Shop now",
+            "btnlink": "shopify://collections/coll1",
+            "color_scheme": "scheme-82303b6e-2ff4-41c2-aadd-6f5027c5038c"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "title": "Fuel Your Life with Fresh,",
+            "sub_title": "Wholesome Foods",
+            "description": "discover tasty options!",
+            "img": "shopify://shop_images/Frame_2499_2.png",
+            "btntext": "Shop now",
+            "btnlink": "shopify://collections/collection16",
+            "color_scheme": "scheme-542a2484-5511-46b5-8f05-7c5934cea87c"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ],
       "settings": {}
+    },
+    "image-pro": {
+      "type": "image-pro",
+      "blocks": {
+        "icon_block_rVz6Fm": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/avocado_6233425.png",
+            "icon_bg": "#e1ecdd",
+            "icon_number": "975 mg",
+            "icon_number_color": "#001e2b",
+            "icon_number_font_size": "16px",
+            "icon_text": "Potassium",
+            "icon_text_color": "#001e2b",
+            "icon_text_font_size": "16px",
+            "icon_position": "top"
+          }
+        },
+        "icon_block_brRLUi": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/avocado_5248983.png",
+            "icon_bg": "#f9e2d8",
+            "icon_number": "13.5 mg",
+            "icon_number_color": "#001e2b",
+            "icon_number_font_size": "16px",
+            "icon_text": "dietary",
+            "icon_text_color": "#001e2b",
+            "icon_text_font_size": "16px",
+            "icon_position": "center"
+          }
+        },
+        "icon_block_tR8phE": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/fruit_14558253.png",
+            "icon_bg": "#e2ebf8",
+            "icon_number": "29 gm",
+            "icon_number_color": "#001e2b",
+            "icon_number_font_size": "16px",
+            "icon_text": "fat",
+            "icon_text_color": "#001e2b",
+            "icon_text_font_size": "16px",
+            "icon_position": "bottom"
+          }
+        },
+        "icon_block_Kh6BeQ": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/avocado_4312931.png",
+            "icon_bg": "#fdf7e7",
+            "icon_number": "42 mcg",
+            "icon_number_color": "#001e2b",
+            "icon_number_font_size": "16px",
+            "icon_text": "Vitamin K",
+            "icon_text_color": "#001e2b",
+            "icon_text_font_size": "16px",
+            "icon_position": "top"
+          }
+        },
+        "icon_block_RmewMj": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/avocado_3440566.png",
+            "icon_bg": "#ecddff",
+            "icon_number": "32 gm",
+            "icon_number_color": "#001e2b",
+            "icon_number_font_size": "16px",
+            "icon_text": "calories",
+            "icon_text_color": "#001e2b",
+            "icon_text_font_size": "16px",
+            "icon_position": "center"
+          }
+        },
+        "icon_block_MwLzqM": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/avocado_5248983.png",
+            "icon_bg": "#fdddca",
+            "icon_number": "20 mg",
+            "icon_number_color": "#001e2b",
+            "icon_number_font_size": "16px",
+            "icon_text": "Vitamin C",
+            "icon_text_color": "#001e2b",
+            "icon_text_font_size": "16px",
+            "icon_position": "bottom"
+          }
+        }
+      },
+      "block_order": [
+        "icon_block_rVz6Fm",
+        "icon_block_brRLUi",
+        "icon_block_tR8phE",
+        "icon_block_Kh6BeQ",
+        "icon_block_RmewMj",
+        "icon_block_MwLzqM"
+      ],
+      "settings": {
+        "main_title": "product Features",
+        "main_title_color": "#001e2b",
+        "main_title_font_size": "28px",
+        "main_desc": "Get all latest information on events, sales offers risus sollicitudin interdum",
+        "main_desc_color": "#4b4c4d",
+        "main_desc_font_size": "16px",
+        "main_image": "shopify://shop_images/164198510_Avocado_11_isolated_1.png",
+        "background_color": "#ffffff"
+      }
+    },
+    "video": {
+      "type": "video",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "video": "shopify://files/videos/WhatsApp Video 2025-05-21 at 12.39.06_0ee7fec8.mp4",
+        "video_url": "",
+        "cover_image": "shopify://shop_images/Frame_2542_2.png",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "brands_k47tPk": {
+      "type": "brands",
+      "blocks": {
+        "brand_CBdkQh": {
+          "type": "brand",
+          "settings": {
+            "title": "Arla",
+            "img": "shopify://shop_images/1dff15dcac1cb4243c0a86e9d330fa23.png",
+            "btnlink": ""
+          }
+        },
+        "brand_Ud8P6H": {
+          "type": "brand",
+          "settings": {
+            "title": "Brand #2",
+            "img": "shopify://shop_images/33dc54da494d168be48823af3782d15d.png",
+            "btnlink": ""
+          }
+        },
+        "brand_DDtHmW": {
+          "type": "brand",
+          "settings": {
+            "title": "Brand #3",
+            "img": "shopify://shop_images/a159c0fed759d43d75a0db29d76425c1.png",
+            "btnlink": ""
+          }
+        },
+        "brand_4nq7TD": {
+          "type": "brand",
+          "settings": {
+            "title": "Brand #4",
+            "img": "shopify://shop_images/ed7ab7a90a27b652f69c9f99340ae86c.png",
+            "btnlink": ""
+          }
+        },
+        "brand_e8MRrU": {
+          "type": "brand",
+          "settings": {
+            "title": "Brand #5",
+            "img": "shopify://shop_images/Premium_Vector___Organic_supermarket_logo_design_1.png",
+            "btnlink": ""
+          }
+        },
+        "brand_YEP96A": {
+          "type": "brand",
+          "settings": {
+            "title": "Brand #6",
+            "img": "shopify://shop_images/6e22770a0529f612da3be2ae8465fee0.png",
+            "btnlink": ""
+          }
+        },
+        "brand_cLmUPY": {
+          "type": "brand",
+          "settings": {
+            "title": "Brand #7",
+            "img": "shopify://shop_images/1dff15dcac1cb4243c0a86e9d330fa23.png",
+            "btnlink": ""
+          }
+        }
+      },
+      "block_order": [
+        "brand_CBdkQh",
+        "brand_Ud8P6H",
+        "brand_DDtHmW",
+        "brand_4nq7TD",
+        "brand_e8MRrU",
+        "brand_YEP96A",
+        "brand_cLmUPY"
+      ],
+      "name": "Brands",
+      "settings": {
+        "title": "Shop By Brands",
+        "color_scheme": "scheme-e0f7feab-ac64-4b2a-9020-9f0c33d39dc0",
+        "broder_color": "#367e18"
+      }
+    },
+    "testimonials_VVz3mg": {
+      "type": "testimonials",
+      "blocks": {
+        "slide_whdyCW": {
+          "type": "slide",
+          "settings": {
+            "customer_image": "shopify://shop_images/Ellipse_14.png",
+            "customer_name": "Emily Johnson",
+            "customer_opinion": "I was amazed by how fresh the fruits and vegetables were. Delivery was right on time!"
+          }
+        },
+        "slide_M4EJqH": {
+          "type": "slide",
+          "settings": {
+            "customer_image": "shopify://shop_images/Ellipse_14_1.png",
+            "customer_name": "Sophia Miller",
+            "customer_opinion": "Excellent customer service and everything arrives perfectly packed. Highly recommended!"
+          }
+        },
+        "slide_tepC7r": {
+          "type": "slide",
+          "settings": {
+            "customer_image": "shopify://shop_images/Ellipse_14_2.png",
+            "customer_name": "James Thompson",
+            "customer_opinion": "An amazing variety of products, and I love how quick and easy it is to reorder my weekly essentials."
+          }
+        },
+        "slide_bbt6y7": {
+          "type": "slide",
+          "settings": {
+            "customer_image": "shopify://shop_images/Ellipse_14.png",
+            "customer_name": "Emily Johnson",
+            "customer_opinion": "I was amazed by how fresh the fruits and vegetables were. Delivery was right on time!"
+          }
+        },
+        "slide_9iwLPU": {
+          "type": "slide",
+          "settings": {
+            "customer_image": "shopify://shop_images/Ellipse_14_1.png",
+            "customer_name": "Sophia Miller",
+            "customer_opinion": "Excellent customer service and everything arrives perfectly packed. Highly recommended!"
+          }
+        },
+        "slide_YrkQt6": {
+          "type": "slide",
+          "settings": {
+            "customer_image": "shopify://shop_images/Ellipse_14_2.png",
+            "customer_name": "James Thompson",
+            "customer_opinion": "An amazing variety of products, and I love how quick and easy it is to reorder my weekly essentials."
+          }
+        }
+      },
+      "block_order": [
+        "slide_whdyCW",
+        "slide_M4EJqH",
+        "slide_tepC7r",
+        "slide_bbt6y7",
+        "slide_9iwLPU",
+        "slide_YrkQt6"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "section_bg_color": "#ffffff",
+        "section_title": "What Our Customers Say",
+        "section_description": "We’re proud to share the voices of our happy customers ,Their feedback inspires us to keep improving every day Discover what makes our experience truly exceptional.",
+        "section_title_color": "#000000",
+        "section_description_color": "#1b1b1b",
+        "active_color": "#367e18",
+        "customer_name_color": "#000000",
+        "customer_opinion_color": "#525252"
+      }
+    },
+    "featured_blog_MCgFYz": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "news",
+        "post_limit": 3,
+        "heading": "Our Blogs",
+        "description": "Get all latest information on events, sales offers risus sollicitudin interdum",
+        "heading_size": "h1",
+        "columns_desktop": 3,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": true,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "h-img-banner": {
+      "type": "h-img-banner",
+      "settings": {
+        "title": "keep healthy",
+        "description": "Your Journey to Wellness Begins Here.",
+        "img": "shopify://shop_images/Frame_2561_3.png",
+        "img-mob": "shopify://shop_images/Frame_2673_1.png",
+        "btntext": "explore now",
+        "btnlink": "",
+        "line_color": "#e9c915",
+        "color_scheme": "scheme-1e615884-ccca-476b-8ad2-a93f3821f6d1"
+      }
+    },
+    "fe_stre_GhijUA": {
+      "type": "fe-stre",
+      "blocks": {
+        "feature_UpMRQQ": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/fast-delivery_3_1.png",
+            "title": "Customer Support",
+            "subtitle": "24/7 customer support"
+          }
+        },
+        "feature_e89Hyz": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/return_1_4da113b7-b42a-4b5a-a329-c56fb034e58c.png",
+            "title": "90 Day Return",
+            "subtitle": "If goods have problem"
+          }
+        },
+        "feature_zGin3R": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/wallet_4_1.png",
+            "title": "Secure Payment",
+            "subtitle": "100% secure payment"
+          }
+        },
+        "feature_nPGKiH": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/fast-delivery_3_1_1.png",
+            "title": "Free Shipping",
+            "subtitle": "Free shipping all over"
+          }
+        }
+      },
+      "block_order": [
+        "feature_UpMRQQ",
+        "feature_e89Hyz",
+        "feature_zGin3R",
+        "feature_nPGKiH"
+      ],
+      "name": "Features",
+      "settings": {
+        "background_type": "image",
+        "background_image": "shopify://shop_images/efddac3b1387913dabee2df5bc2f3e21c2a084da.jpg",
+        "show_overlay": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 50,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "space_between": 32,
+        "title_size": "h6",
+        "title_lineheight": "1.5",
+        "title_color": "#001e2b",
+        "image_wrapper_background_color": "#dbefd6"
+      }
+    },
+    "contact_form_KmKcHb": {
+      "type": "contact-form",
+      "name": "t:sections.contact-form.presets.name",
+      "settings": {
+        "heading": "Contact us",
+        "sub-title": "we are here to response for all your requests",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "label_color": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "btn-background-color": "#367e18",
+        "btn-color": "#ffffff",
+        "map_link": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d109356.89177927209!2d31.4917683!3d31.070718899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f7783c528e11c1%3A0x9dcc6843730fabf7!2z2YPZiNio2LHZiiDYs9mE2KfZhdmI2YY!5e0!3m2!1sar!2seg!4v1748781923295!5m2!1sar!2seg",
+        "email_address": "khiraat@gmail.com",
+        "address": "5th of novelle US",
+        "phone_number": "522006999111",
+        "map_background": "#367e18",
+        "info_color": "#ffffff",
+        "map_background_image": "shopify://shop_images/Group_d6fce71f-bcc2-49f9-80ab-2980c24670e0.png",
+        "facebook_link": "https://www.figma.com/design/wirAEBi4D5QqDYHEQBLjbp/Untitled?node-id=13-2299&m=draw",
+        "twitter_link": "https://www.figma.com/design/wirAEBi4D5QqDYHEQBLjbp/Untitled?node-id=13-2299&m=draw",
+        "instagram_link": "https://www.figma.com/design/wirAEBi4D5QqDYHEQBLjbp/Untitled?node-id=13-2299&m=draw",
+        "snapchat_link": "https://www.figma.com/design/wirAEBi4D5QqDYHEQBLjbp/Untitled?node-id=13-2299&m=draw"
+      }
     }
   },
   "order": [
-    "main"
+    "main_slider_TzBAbV",
+    "collection_showcase_card_YyGTx6",
+    "featured_collection_xHj7QW",
+    "banner_v7_7tyLrF",
+    "video_n8Unwx",
+    "product_slider_4wcxV9",
+    "featured_collection_cmyrXD",
+    "square-images",
+    "image-pro",
+    "video",
+    "brands_k47tPk",
+    "testimonials_VVz3mg",
+    "featured_blog_MCgFYz",
+    "h-img-banner",
+    "fe_stre_GhijUA",
+    "contact_form_KmKcHb"
   ]
 }

@@ -1,0 +1,167 @@
+
+<div class="h-img-banner page-width h-img-banner-{{ section.id }}  "> 
+  {% if section.settings.btnlink == blank %}
+    {% assign btnlink = shop.secure_url %}
+  {% else %}
+    {% assign btnlink = section.settings.btnlink %}
+  {% endif %}
+  {% if  section.settings.btntext == blank  %}
+    <a href="{{ btnlink }}" alt="{{ section.settings.title }}" style="display: block;">
+  {% endif %}
+
+  <div class="container-content">
+    <div class="content color-{{ section.settings.color_scheme }}">
+        <h3 class="content-title">
+            <span>
+                {{ section.settings.title }}
+            </span>
+            <span class="svg">
+                {% render 'svg-img-banner' %}
+            </span>  
+        </h3>
+      <p class="description">{{ section.settings.description }}</p>
+      {% if  section.settings.btntext != blank  %}
+        <a href="{{ btnlink }}"  alt="{{ section.settings.title }}" class="button inline-block  px-6 py-2 rounded  transition">
+          <span>{{- section.settings.btntext -}}</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+  {% if  section.settings.btntext == blank %}
+    </a>
+  {% endif %}
+</div>
+
+{%- style -%}
+
+  .h-img-banner {
+    min-height: 500px;
+    display: flex;
+  }
+  .h-img-banner .container-content {
+        min-height: 500px;
+        height: 100%;
+        background: url('{{ section.settings.img | image_url: width: 1100 }}') ;
+        background-repeat: round;
+        {%- if section.settings.img-mob -%}
+            @media(max-width: 768px) {
+                background: url('{{ section.settings["img-mob"] | image_url: width: 1100 }}') no-repeat center center/cover;
+            }
+        {%- endif -%}
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        @media(max-width: 768px) {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+  }
+  .h-img-banner .container-content .content {
+    margin-top: 16px;
+    background-color: inherit !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 0.1735rem + 2.2041vw, 3.7rem);
+    @media(max-width: 768px) {
+        justify-content: flex-end;
+        margin-bottom: 30px;
+    }
+    padding: 10px;
+    text-align: center;
+  }
+  .h-img-banner .svg {
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+  }
+  .h-img-banner .svg svg {
+    width: 100%
+  }
+  .h-img-banner .content-title {
+    font-weight: 700;
+    font-size: clamp(3.2rem, 2.3429rem + 2.2857vw, 6rem);
+    line-height: 1.2;
+    position: relative;
+    width: fit-content
+  }
+  .h-img-banner .description {
+    font-weight: 400;
+    font-size: clamp(1.6rem, 1.1714rem + 1.1429vw, 3rem);
+    line-height: 1.2;
+  }
+  .h-img-banner .button {
+    font-weight: 500;
+    font-size: clamp(2rem, 1.8776rem + 0.3265vw, 2.4rem);
+    line-height: 1.2;
+    text-transform: capitalize;
+    padding: 1.2rem 4rem;
+    @media(max-width: 768px) {
+        padding: 0.8rem 2rem;
+    }
+    border-radius: 4px;
+  }
+{%- endstyle -%}
+
+{% schema %} 
+{
+  "name": "t:sections.img-banner.name",
+  "tag":"section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.img-banner.settings.title.label",
+      "default": "t:sections.img-banner.settings.title.default"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "t:sections.img-banner.settings.description.label",
+      "default": "t:sections.img-banner.settings.description.default"
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "t:sections.img-banner.settings.img.label",
+      "info": "t:sections.img-banner.settings.img.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "img-mob",
+      "label": "t:sections.img-banner.settings.img-mob.label",
+      "info": "t:sections.img-banner.settings.img-mob.info"
+    },
+    {
+      "type": "text",
+      "id": "btntext",
+      "label": "t:sections.img-banner.settings.btn-text.label",
+      "default": "t:sections.img-banner.settings.btn-text.default"
+    },
+    {
+      "type": "url",
+      "id": "btnlink",
+      "label": "t:sections.img-banner.settings.btn_url.label",
+      "info": "t:sections.img-banner.settings.btn_url.info"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "color for line",
+      "default": "#E9C915"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+      {
+        "name": "Image banner with text"
+      }
+    ]
+}
+{% endschema %}

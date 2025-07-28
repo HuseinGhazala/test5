@@ -1,0 +1,124 @@
+<style type="text/css">
+  .template-404 .title + * {
+    margin-top: 1rem;
+  }
+  .template-404 .title {
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .template-404 .sub_title {
+    font-weight: 300;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .template-404 {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .template-404 {
+      min-height: 70vh;
+    }
+    .template-404 .title + * {
+      margin-top: 2rem;
+    }
+    .template-404 .title {
+      font-weight: 600;
+      font-size: 24px;
+    }
+    .template-404 .sub_title {
+      font-weight: 300;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+  }
+</style>
+{% if section.settings.btnlink == blank %}
+  {% assign btnlink = shop.secure_url %}
+{% else %}
+  {% assign btnlink = section.settings.btnlink %}
+{% endif %}
+
+{% render 'breadcrumbs' %}
+<section
+  class="template-404 page-width page-margin center"
+  style="background-image: url({{ section.settings.imageBg | image_url: width: 1600 }});"
+>
+  <div>
+    {% if section.settings.img_switch %}
+      <img
+        class="img_404"
+        style="margin: 2rem auto 0 auto;"
+        src="{{ section.settings.img | image_url: width: 1100}}"
+        width="280"
+        height="100"
+        alt="صفحة غير موجودة"
+      >
+    {% endif %}
+    <h1 class="title">
+      {{ section.settings.heading }}
+    </h1>
+    <h2 class="sub_title" style="max-width: 600px;  margin-left:auto;  margin-right:auto;">
+      {{ section.settings.sub_title }}
+    </h2>
+    <a href="{{ btnlink }}" class="button"> {{ section.settings.btntext }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.404.name",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "imageBg",
+      "label": "t:sections.404.settings.bg-img.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.404.settings.heading.label",
+      "default": "t:sections.404.settings.heading.default"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "t:sections.404.settings.sub_title.label",
+      "default": "t:sections.404.settings.sub_title.default"
+    },
+    {
+      "type": "checkbox",
+      "id": "img_switch",
+      "default": true,
+      "label": "t:sections.404.settings.img_switch.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "t:sections.404.settings.img.label",
+      "info": "t:sections.404.settings.img.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "btntext",
+      "label": "t:sections.404.settings.btn-text.label",
+      "default": "t:sections.404.settings.btn-text.default"
+    },
+    {
+      "type": "url",
+      "id": "btnlink",
+      "label": "t:sections.404.settings.btn_url.label",
+      "info": "t:sections.404.settings.btn_url.info"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,112 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+    .section-{{ section.id }} .main-page-title {
+    font-size: 24px;
+    font-weight: 700;
+    @media(min-width: 768px) {
+      font-size: 35px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-image section-{{ section.id }}">
+  <div class="page-width page-width--narrow section-{{ section.id }}-padding">
+    <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {{ page.title | escape }}
+    </h1>
+    <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+
+{%- style -%}
+  {%- if section.settings.page_image != blank -%}
+      .section-{{ section.id }}-image {
+          position: relative;
+          background: url({{ section.settings.page_image | image_url: width: 1100 }}) no-repeat center center;
+          background-size: cover;
+          min-height: 300px;
+          display: flex;
+          align-items: center;
+      }
+    {% if section.settings.is_overlay %}
+      .section-{{ section.id }}-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: #000000;
+        opacity: 0.6;
+      }
+    {% endif %}
+  {%- endif -%}
+  .section-{{ section.id }}-padding .main-page-title {
+    color: {{ section.settings.title_color }};
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin: 0;
+    user-select: none;
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "page_image",
+      "label": "Select Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_overlay",
+      "label": "add black overlay on image"
+    },
+    {
+        "type": "color",
+        "id": "title_color",
+        "label": "set color for main heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

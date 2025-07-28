@@ -8,18 +8,104 @@
  * ------------------------------------------------------------
  */
 {
+  "name": "t:sections.footer.name",
   "type": "footer",
-  "name": "t:general.footer",
   "sections": {
+    "newsletter_XRx6RQ": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_CbPbnG": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "email_form_DBDHjF": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_CbPbnG",
+        "email_form_DBDHjF"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
     "footer": {
       "type": "footer",
+      "blocks": {
+        "brand_information_FpfmJT": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": true
+          }
+        },
+        "link_list_fy9jpR": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Account",
+            "footer-line-style": true,
+            "footer-line-color": "#367e18",
+            "menu": "account"
+          }
+        },
+        "link_list_ye4iNL": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shopping",
+            "footer-line-style": true,
+            "footer-line-color": "#367e18",
+            "menu": "customer-account-main-menu"
+          }
+        },
+        "gallery_g97AWz": {
+          "type": "gallery",
+          "settings": {
+            "heading": "Photo Gallery",
+            "footer-line-style": true,
+            "footer-line-color": "#367e18",
+            "image_1": "shopify://shop_images/Rectangle_36.png",
+            "image_2": "shopify://shop_images/Rectangle_40.png",
+            "image_3": "shopify://shop_images/Rectangle_38.png",
+            "image_4": "shopify://shop_images/Rectangle_39.png",
+            "image_5": "shopify://shop_images/Rectangle_37.png",
+            "image_6": "shopify://shop_images/Rectangle_41.png"
+          }
+        }
+      },
+      "block_order": [
+        "brand_information_FpfmJT",
+        "link_list_fy9jpR",
+        "link_list_ye4iNL",
+        "gallery_g97AWz"
+      ],
       "settings": {
-        "menu": "",
-        "show_payment_icons": true
+        "color_scheme": "scheme-542a2484-5511-46b5-8f05-7c5934cea87c",
+        "footer_background_color": "#f4efea",
+        "footer_title_background_color": "#367e18",
+        "footer_bottom_background_color": "#367e18",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": false,
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 44,
+        "padding_bottom": 12
       }
     }
   },
   "order": [
+    "newsletter_XRx6RQ",
     "footer"
   ]
 }

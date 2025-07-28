@@ -1,0 +1,452 @@
+{% assign bg_img = section.settings.background_image | image_url: width: 1100 %}
+<div
+  class="custom-icons-section"
+  style="
+    background:
+    {% if section.settings.background_image != blank %}
+      url('{{ bg_img }}') center/cover no-repeat;
+    {% else %}
+      {{ section.settings.background_color }};
+    {% endif %}
+  "
+>
+  <div class=" page-width">
+    {% if section.settings.main_title != blank %}
+      <h2
+        class="main-title"
+        style="
+          color: {{ section.settings.main_title_color }};
+          font-size: {{ section.settings.main_title_font_size }};
+        "
+      >
+        {{ section.settings.main_title }}
+      </h2>
+    {% endif %}
+    {% if section.settings.main_desc != blank %}
+      <div
+        class="main-desc"
+        style="
+          color: {{ section.settings.main_desc_color }};
+          font-size: {{ section.settings.main_desc_font_size }};
+        "
+      >
+        {{ section.settings.main_desc }}
+      </div>
+    {% endif %}
+    <div class="icons-layout">
+      <div class="main-image-center mphh">
+        {% if section.settings.main_image != blank %}
+          <img
+            src="{{ section.settings.main_image | image_url: width: 1100 }}"
+            alt=" main_image"
+            width="260"
+            height="260"
+          >
+        {% endif %}
+      </div>
+      <div class="moo-style">
+        <div class="icons-side left">
+          {% assign left_blocks = section.blocks | slice: 0, 3 %}
+          {% for block in left_blocks %}
+            <div class="ime moo-content">
+              <div class="moo-info" style="display: flex; align-items: center; gap: 10px;">
+                <div class="icon-block" style="background: {{ block.settings.icon_bg }};">
+                  {% if block.settings.icon_image != blank %}
+                    <img
+                      src="{{ block.settings.icon_image | image_url: width: 100 }}"
+                      alt="icon_image"
+                      width="36"
+                      height="36"
+                    >
+                  {% endif %}
+                </div>
+                <div>
+                  {% if block.settings.icon_number != blank %}
+                    <div
+                      class="icon-text"
+                      style="
+                        font-weight: 700;
+                        color: {{ block.settings.icon_number_color }};
+                        font-size: {{ block.settings.icon_number_font_size }};
+                      "
+                    >
+                      <span title="{{ block.settings.icon_number }}">
+                        {{ block.settings.icon_number }}
+                      </span>
+                    </div>
+                  {% endif %}
+                  {% if block.settings.icon_text != blank %}
+                    <div
+                      class="icon-text"
+                      style="
+                        font-weight: 600;
+                        color: {{ block.settings.icon_text_color }};
+                        font-size: {{ block.settings.icon_text_font_size }};
+                      "
+                    >
+                      <span title="{{ block.settings.icon_text }}">
+                        {{ block.settings.icon_text }}
+                      </span>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="snap-container">
+                <span class="snap">
+                  {% if block.settings.icon_position == 'top' %}
+                    {% render 'left-top' %}
+                  {% elsif block.settings.icon_position == 'center' %}
+                    {% render 'left-center' %}
+                  {% elsif block.settings.icon_position == 'bottom' %}
+                    {% render 'left-bottom' %}
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="main-image-center pcc">
+          {% if section.settings.main_image != blank %}
+            <img
+              src="{{ section.settings.main_image | image_url: width: 450 }}"
+              alt="main image"
+              width="260"
+              height="260"
+            >
+          {% endif %}
+        </div>
+        <div class="icons-side right">
+          {% assign right_blocks = section.blocks | slice: 3, 3 %}
+          {% for block in right_blocks %}
+            <div
+              class="ime moo-content"
+            >
+              <div class="snap-container">
+                <span class="snap">
+                  {% if block.settings.icon_position == 'top' %}
+                    {% render 'right-top' %}
+                  {% elsif block.settings.icon_position == 'center' %}
+                    {% render 'right-center' %}
+                  {% elsif block.settings.icon_position == 'bottom' %}
+                    {% render 'right-bottom' %}
+                  {% endif %}
+                </span>
+              </div>
+              <div class="moo-info">
+                <div class="icon-block" style="background: {{ block.settings.icon_bg }};">
+                  {% if block.settings.icon_image != blank %}
+                    <img
+                      src="{{ block.settings.icon_image | image_url: width: 100 }}"
+                      alt="icon_image"
+                      width="36"
+                      height="36"
+                    >
+                  {% endif %}
+                </div>
+                <div style="text-align: start;">
+                  {% if block.settings.icon_number != blank %}
+                    <div
+                      class="icon-text"
+                      style="
+                        font-weight: 700;
+                        color: {{ block.settings.icon_number_color }};
+                        font-size: {{ block.settings.icon_number_font_size }};
+                      "
+                    >
+                      <span title="{{ block.settings.icon_number }}">
+                        {{ block.settings.icon_number }}
+                      </span>
+                    </div>
+                  {% endif %}
+                  {% if block.settings.icon_text != blank %}
+                    <div
+                      class="icon-text"
+                      style="
+                        font-weight: 600;
+                        color: {{ block.settings.icon_text_color }};
+                        font-size: {{ block.settings.icon_text_font_size }};
+                      "
+                    >
+                      <span title="{{ block.settings.icon_text }}">
+                        {{ block.settings.icon_text }}
+                      </span>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom-icons-section {
+    padding: 0;
+    position: relative;
+  }
+  .container-custom-icons {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .main-title {
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: 700;
+  }
+  .main-desc {
+    font-weight: 400;
+    text-align: center;
+  }
+  .icons-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media (min-width: 992px) {
+      margin-top: 30px;
+    }
+  }
+  .icons-side {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .icon-block {
+    width: 70px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    aspect-ratio: 1 / 1;
+  }
+  .icon-block img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+  .icon-text {
+    font-size: clamp(1.6rem, 1.4776rem + 0.3265vw, 2rem);
+    margin-top: 6px;
+    color: #444;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .main-image-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .main-image-center img {
+    object-fit: contain;
+    width: 100%;
+  }
+  @media (min-width: 992px) {
+    .mphh {
+      display: none;
+    }
+  }
+  .moo-style {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    direction: ltr;
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .moo-content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1rem, 0.6939rem + 0.8163vw, 2rem);
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+  .moo-content .moo-info {
+    @media (max-width: 992px) {
+      grid-column: 1 / -1;
+    }
+  }
+  .snap-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .snap {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+  }
+  .snap svg {
+    width: 100%;
+  }
+  .moo-info {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 0.6939rem + 0.8163vw, 2rem);
+    justify-content: center;
+  }
+  @media (max-width: 992px) {
+    .icon-text {
+      font-weight: 700px;
+    }
+    .snap-container {
+      display: none;
+    }
+    .pcc {
+      display: none;
+    }
+    .icons-layout {
+      flex-direction: column;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Image with Side Icons",
+  "tag": "section",
+  "class": "section ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Title"
+    },
+    {
+      "type": "color",
+      "id": "main_title_color",
+      "label": "Main Title Color",
+      "default": "#001e2b"
+    },
+    {
+      "type": "text",
+      "id": "main_title_font_size",
+      "label": "Main Title Font Size",
+      "default": "24px",
+      "info": "Enter font size (e.g. 24px, 1.5rem)"
+    },
+    {
+      "type": "textarea",
+      "id": "main_desc",
+      "label": "Description (optional)"
+    },
+    {
+      "type": "color",
+      "id": "main_desc_color",
+      "label": "Main Description Color",
+      "default": "#001e2b"
+    },
+    {
+      "type": "text",
+      "id": "main_desc_font_size",
+      "label": "Main Description Font Size",
+      "default": "16px",
+      "info": "Enter font size (e.g. 16px, 1rem)"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image (optional)"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color (optional)",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_block",
+      "name": "Side Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "color",
+          "id": "icon_bg",
+          "label": "Icon Background Color",
+          "default": "#f5f5f5"
+        },
+        {
+          "type": "text",
+          "id": "icon_number",
+          "label": "Icon Number (optional)",
+          "default": "975 mg"
+        },
+        {
+          "type": "color",
+          "id": "icon_number_color",
+          "label": "Icon Number Color",
+          "default": "#001e2b"
+        },
+        {
+          "type": "text",
+          "id": "icon_number_font_size",
+          "label": "Icon Number Font Size",
+          "default": "16px",
+          "info": "Enter font size (e.g. 16px, 1.2rem)"
+        },
+        {
+          "type": "text",
+          "id": "icon_text",
+          "label": "Icon Text (optional)",
+          "default": "Potassium"
+        },
+        {
+          "type": "color",
+          "id": "icon_text_color",
+          "label": "Icon Text Color",
+          "default": "#001e2b"
+        },
+        {
+          "type": "text",
+          "id": "icon_text_font_size",
+          "label": "Icon Text Font Size",
+          "default": "16px",
+          "info": "Enter font size (e.g. 16px, 1.2rem)"
+        },
+        {
+          "type": "select",
+          "id": "icon_position",
+          "label": "Icon Position",
+          "options": [
+            { "value": "top", "label": "Top" },
+            { "value": "center", "label": "Center" },
+            { "value": "bottom", "label": "Bottom" }
+          ],
+          "default": "center"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Image with Side Icons"
+    }
+  ]
+}
+{% endschema %}

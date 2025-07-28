@@ -10,11 +10,44 @@
 {
   "sections": {
     "main": {
-      "type": "page",
-      "settings": {}
+      "type": "main-page",
+      "settings": {
+        "page_image": "shopify://shop_images/eda6c2d19395da05fea6ccc564c327f7e1adcc7b_ac1ca7a4-e9f5-4dc0-8ac0-ff3bf177f81c.jpg",
+        "is_overlay": true,
+        "title_color": "#ffffff",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "contact_form_4nHBxY": {
+      "type": "contact-form",
+      "name": "t:sections.contact-form.presets.name",
+      "settings": {
+        "heading": "Contact form",
+        "sub-title": "we are here to response for all your requests",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "label_color": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "btn-background-color": "#367e18",
+        "btn-color": "#ffffff",
+        "map_link": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8420.629858376038!2d-101.31037728326275!3d58.15437440686696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5244dc9a9853f89d%3A0x4be0f71b8d664e7a!2zS2FwdXNrYXlwYWNoaWssINmF2KfZhtmK2KrZiNio2KcgUjBCIDBCMNiMINmD2YbYr9in!5e0!3m2!1sar!2seg!4v1751285059921!5m2!1sar!2seg",
+        "email_address": "khiraat@gmail.com",
+        "address": "5th of novelle US",
+        "phone_number": "+522 006 999 111",
+        "map_background": "#367e18",
+        "info_color": "#ffffff",
+        "map_background_image": "shopify://shop_images/Group_cb2eb4bf-9f2a-48a8-b23d-e36dcad24add.png",
+        "facebook_link": "#",
+        "twitter_link": "#",
+        "instagram_link": "#",
+        "snapchat_link": "#"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "contact_form_4nHBxY"
   ]
 }

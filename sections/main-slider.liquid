@@ -1,0 +1,723 @@
+<div class="page-width main-slider-section main-slider-{{ section.id }}">
+  {%- assign column_blocks = section.blocks | where: 'type', 'column' -%}
+  {%- assign column_count = column_blocks.size -%}
+
+  <div class="content">
+    {%- if section.settings.toggle_categories_button and column_count > 0 -%}
+      <button
+        type="button"
+        role="button"
+        aria-label="{{ 'accessibility.toggle_categories' | t: button_text: section.settings.toggle_categories_button }}"
+        class="category-button"
+      >
+        <span class="category-button-svg">
+          <i class="fa-solid fa-bars"></i>
+        </span>
+
+        <span class="category-button-arrow">
+          <i class="fa-solid fa-arrow-left-long"></i>
+        </span>
+
+        <span class="category-button-text"> {{ section.settings.toggle_categories_button }}</span>
+      </button>
+    {%- endif -%}
+
+    <div class="category-slider category-is-active">
+      <ul class="category-slider-content">
+        <li class="category-item">
+          <span>{{ section.settings.toggle_categories_button }}</span>
+        </li>
+
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'column' -%}
+            {%- assign collection = block.settings.collection_id -%}
+            {%- if collection -%}
+              <li class="category-item">
+                <a
+                  class="category-item-link"
+                  href="{{ collection.url }}"
+                  style="--bg:{{ section.settings.slide_title_color }}"
+                >
+                  <div class="category-item-link-info">
+                    {%- if collection.image -%}
+                      <span class="category-image">
+                        {{ collection.image | image_url: width: 30 | image_tag: alt: '' }}
+                      </span>
+                    {%- endif -%}
+
+                    {%- if collection.title -%}
+                      <span class="category-title">{{ collection.title }}</span>
+                    {%- endif -%}
+                  </div>
+
+                  {%- if collection.title or collection.image -%}
+                    <span class="category-icon">
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+                  {%- endif -%}
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    <div class="main-slider">
+      <div class="swiper-wrapper">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'slide' -%}
+            {%- assign slide = block.settings -%}
+
+            {%- capture is_overlay -%}
+							{%- if slide.is_overlay -%} is-overlay {%- endif -%}
+						{%- endcapture -%}
+
+            <div
+              class="slide-content swiper-slide {{ is_overlay | strip }}"
+              style="{%- if block.settings.slide_image -%} --background: url('{{ block.settings.slide_image | image_url: width: 1000 }}'); {%- endif -%} {%- if block.settings.slide_image_mobile -%} --background-mobile: url('{{ block.settings.slide_image_mobile | image_url: width: 1000 }}'); {%- endif -%}"
+            >
+              <div class="slide-text">
+                {%- if slide.slide_title -%}
+                  <h2
+                    class="slide-title"
+                    {%- if slide.slide_title_color -%}
+                      style="color: {{ slide.slide_title_color }}"
+                    {%- endif -%}
+                  >
+                    <span class="slide-title-item"> {{ slide.slide_title }} </span>
+                    <span class="slide-title-line">
+                      {%- render 'main-slider-line' -%}
+                    </span>
+                  </h2>
+                {%- endif -%}
+
+                {%- if slide.slide_description != blank -%}
+                  <p
+                    class="slide-description"
+                    {%- if slide.slide_description -%}
+                      style="color: {{ slide.slide_sub_title_color }}"
+                    {%- endif -%}
+                  >
+                    <span class="slide-description-item"> {{ slide.slide_description }} </span>
+                  </p>
+                {%- endif -%}
+
+                {%- if slide.slide_link and slide.slide_button_text != blank -%}
+                  <a
+                    href="{{ slide.slide_link }}"
+                    class="slide-link"
+                    style="color: {{ slide.slide_button_color }}; background-color: {{ slide.slide_button_bg_color }}"
+                  >
+                    <span class="slide-link-item"> {{ slide.slide_button_text }} </span>
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+
+{%- style -%}
+  .category-slider-content {
+  	scrollbar-width: thin;
+    background: white;
+  }
+  .main-slider-{{ section.id }} {
+  	margin-bottom: 64px;
+  	margin-top: 15px;
+  }
+  .main-slider-{{ section.id }} .content {
+  	position: relative;
+  	display: flex;
+  	justify-content: space-between;
+  	align-items: self-start;
+  	overflow: hidden;
+  	height: 520px;
+  	@media(max-width: 768px) {
+  		height: 545px;
+  	}
+  }
+  html[lang="ar"] .main-slider-{{ section.id }} .content {
+  	/* flex-direction: row-reverse; */
+  }
+  .main-slider-{{ section.id }} .content .main-slider {
+  	width: 100%;
+  	{%- if column_count > 0 -%}
+  		@media(min-width: 991.9px) {
+  			width: calc(100% - ( var(--category-width) + 16px ));
+  		}
+  	{%- else -%}
+  		width: 100%;
+  	{%- endif -%}
+  	overflow: hidden;
+  	transition: all 0.5s ease;
+  	height: 100%;
+  	position: relative;
+  	border-radius: 4px
+  }
+  .main-slider-{{ section.id }} .main-slider .swiper-pagination {
+  	z-index: 1;
+  }
+  .main-slider-{{ section.id }} .main-slider .swiper-pagination-bullet {
+  	transition: all 0.5s ease;
+  }
+  .main-slider-{{ section.id }} .main-slider .swiper-pagination-bullet-active {
+  	background-color: {{ section.settings.button_background_color }};
+  	transform: scale(1.5);
+  }
+  .main-slider-{{ section.id }} .main-slider.slider-is-full {
+  	width: 100%;
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-content {
+  	position: relative;
+  	height: 100%;
+  	display: flex;
+  	align-items: self-start;
+  	@media(min-width: 768px) {
+  		align-items: center;
+  	}
+  	@media(max-width: 991.9px) {
+  		justify-content: center;
+  	}
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-content::before {
+  	content: '';
+  	position: absolute;
+  	inset: 0;
+  	background-repeat: no-repeat;
+  	background-image: var(--background);
+  	background-size: cover;
+  	@media(max-width: 767.9px) {
+  		background-image: var(--background-mobile, var(--background));
+  	}
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-content.is-overlay {
+  	position: relative;
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-content.is-overlay::after {
+  	content: '';
+  	position: absolute;
+  	inset: 0;
+  	background-color: rgba(0, 0, 0, 0.3);
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-content .slide-text {
+  	@media(min-width: 992px) {
+  		margin-left: 14%;
+  	}
+  	@media(max-width: 768px) {
+  		margin-top: 100px;
+  	}
+  	display: flex;
+  	flex-direction: column;
+  	gap: 2.6rem;
+  	max-width: 45rem;
+  	align-items: center;
+  	justify-content: center;
+  	user-select: none;
+  	z-index: 1;
+  	position: relative;
+  }
+  html[lang="ar"] .main-slider-{{ section.id }} .main-slider .slide-content .slide-text {
+  	margin-left: 0;
+  	margin-right: 14%;
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-title {
+  	font-size: clamp(3.2rem, 2.6490rem + 1.4694vw, 5rem);
+  	font-weight: 700;
+  	position: relative;
+  	text-transform: capitalize;
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-title-item {
+  	display: -webkit-box !important;
+  	-webkit-line-clamp: 1 !important;
+  	-webkit-box-orient: vertical !important;
+  	overflow: hidden !important;
+  	text-overflow: ellipsis !important;
+  	line-height: 1.5;
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-title-line {
+  	position: absolute;
+  	bottom: -1rem;
+  	left: 0;
+  }
+  html[lang="ar"] .main-slider-{{ section.id }} .main-slider .slide-title-line {
+  	transform: rotateY(180deg);
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-title-line svg {
+  	max-width: 100%;
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-description {
+  	font-size: clamp(1.6rem, 1.3183rem + 1.2019vw, 2.4rem);
+  	text-align: center;
+  	text-transform: capitalize;
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-description-item {
+  	display: -webkit-box !important;
+  	-webkit-line-clamp: 2 !important;
+  	-webkit-box-orient: vertical !important;
+  	overflow: hidden !important;
+  	text-overflow: ellipsis !important;
+  	line-height: 1.5;
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-link {
+  	font-size: clamp(2rem, 1.8592rem + 0.6009vw, 2.4rem);
+  	font-weight: 500;
+  	padding: 0.5rem 3.5rem;
+  	border-radius: 4px;
+  	text-transform: capitalize;
+  	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	display: block;
+  	max-width: 180px;
+  	position: relative;
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-link::after {
+  	content: '';
+  	position: absolute;
+  	top: 0;
+  	left: -65px;
+  	width: 40px;
+  	height: 100%;
+  	background: #fff;
+  	opacity: 0.2;
+  	transform: skewX(-20deg);
+  	transition: left 0.35s ease;
+  }
+  .main-slider-{{ section.id }} .main-slider .slide-link:hover::after {
+  	left: 120%;
+  }
+  .main-slider-{{ section.id }} .category-slider {
+  	width: 0%;
+  	transition: all 0.3s ease;
+
+  }
+  html[lang="ar"] .main-slider-{{ section.id }} .category-slider {
+  	@media(max-width: 767.9px) {
+  		right: 0;
+  		left: unset;
+  	}
+  }
+  .main-slider-{{ section.id }} .category-slider.category-is-active {
+      @media(max-width: 991.9px) {
+        --category-width: 78px;
+      }
+      @media(min-width: 992px) {
+        --category-width: 276px;
+      }
+    }
+  .main-slider-{{ section.id }} .category-slider.category-is-active {
+  	{%- if column_count == 0 -%}
+  		width: 0;
+  	{%- else -%}
+  		width: var(--category-width);
+  	{%- endif -%}
+  	height: 100%;
+  }
+  .main-slider-{{ section.id }} .category-slider.category-is-active .category-slider-content {
+  	opacity: 1;
+  	visibility: visible;
+  }
+  .main-slider-{{ section.id }} .category-slider .category-slider-content {
+  	margin-right: 16px;
+  	overflow-y: auto;
+  	overflow-x: hidden;
+  	opacity: 0;
+  	visibility: hidden;
+  	transition: all 0.5s ease;
+  	border: 1px solid #ddd;
+  	height: 100%;
+  	border-radius: 4px;
+  }
+  html[lang="ar"] .main-slider-{{ section.id }} .category-slider .category-slider-content {
+  	margin-right: 0;
+  	margin-left: 16px;
+  }
+  .main-slider-{{ section.id }} .category-slider-content .category-item-wrapper {
+  	padding-inline: 16px;
+  	background: #fff;
+  	height: calc(520px - 58px);
+  	@media (max-width: 767.9px) {
+  		height: calc(545px - 58px);
+  	}
+  }
+  .main-slider-{{ section.id }} .category-slider-content .category-item {
+  	text-wrap: nowrap;
+  	padding-block: 16px;
+    padding-inline: 10px;
+  	font-size: clamp(1.4rem, 1.2776rem + 0.3265vw, 1.8rem);
+  	flex: 1;
+     	display: flex;
+  	align-items: center;
+  }
+  .main-slider-{{ section.id }} .category-slider-content .category-item-link {
+  	display: flex;
+  	align-items: center;
+  	justify-content: space-between;
+  	width: 100%;
+  	color: {{ section.settings.category_item_color }};
+  	transition: color 0.3s ease;
+  }
+  .main-slider-{{ section.id }} .category-item:hover .category-item-link {
+  	color: {{ section.settings.button_background_color }};
+  }
+  .main-slider-{{ section.id }} .category-slider-content .category-icon i {
+  	font-size: clamp(1.2rem, 1.0944rem + 0.4507vw, 1.5rem);
+  	opacity: 0.4;
+  }
+  html[lang="ar"] .main-slider-{{ section.id }} .category-slider-content .category-icon {
+  	transform: rotateY(180deg);
+  }
+  .main-slider-{{ section.id }} .category-slider-content .category-title {
+  	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	display: block;
+  	max-width: 160px;
+  }
+  .main-slider-{{ section.id }} .category-slider-content .category-item-link-info {
+  	display: flex;
+  	gap: 10px;
+  	align-items: center;
+  	transition: transform 0.3s ease;
+  }
+  .main-slider-{{ section.id }} .category-item:hover .category-item-link-info {
+  	transform: translateX(-5px);
+  }
+  html[lang="ar"] .main-slider-{{ section.id }} .category-item:hover .category-item-link-info {
+
+  }
+  .main-slider-{{ section.id }} .category-item img {
+  	max-width: 30px;
+  	max-height: 30px;
+  }
+  .main-slider-{{ section.id }} .category-slider-content > .category-item:first-child {
+  	background-color: {{ section.settings.button_background_color }};
+  	color: #fff;
+  	padding-block: 10px;
+  	padding-inline: 16px;
+  	font-weight: 500;
+  	font-size: 20px;
+  	border: none;
+  	max-height: 56px;
+  }
+  .main-slider-{{ section.id }} .category-slider-content > .category-item:first-child span {
+  	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	display: block;
+  	max-width: 100%;
+  }
+  .main-slider-{{ section.id }} .category-item-wrapper .category-item {
+  	height: calc((100%) / 7);
+  }
+  .main-slider-{{ section.id }} .category-slider-content .category-item:not(:last-of-type) {
+  	border-bottom: 1px dotted #ddd;
+  }
+  .category-button {
+  	padding: 8px 16px;
+  	cursor: pointer;
+  	border-radius: 4px;
+  	background-color: {{ section.settings.button_background_color }}1f;
+  	color: {{ section.settings.button_text_color }};
+  	text-transform: capitalize;
+  	@media(min-width: 991.9px) {
+  		display: none;
+  	}
+  }
+  .category-button .category-button-text {
+  	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	display: block;
+  	max-width: 150px;
+  	@media(max-width: 991.9px) {
+  		display: none;
+  	}
+  }
+  .header header-drawer .category-button {
+  	display: flex;
+  }
+  @media(max-width: 991.9px) {
+  	.header header-drawer {
+  		display: flex;
+  		gap: 10px;
+  		align-items: center;
+  	}
+  }
+  @media (min-width: 992px) {
+  	.header__inline-menu {
+  		display: flex;
+  		justify-content: space-between;
+  		align-items: center;
+  	}
+  }
+  .header__inline-menu .category-button {
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	gap: 12px;
+  }
+  .category-button {
+  	@media(max-width: 991.9px) {
+  		position: absolute;
+  		top: 10px;
+  		left: 10px;
+  		z-index: 2;
+  	}
+  }
+
+  @media(max-width: 991.9px) {
+  	.category-button .category-button-svg {
+  		display: none;
+  	}
+  }
+  .category-button .category-button-svg i {
+  	color: {{ section.settings.button_background_color }};
+  }
+  .category-button .category-button-arrow i {
+  	color: white;
+  }
+
+  @media(min-width: 991.9px) {
+  	.category-button .category-button-arrow {
+  		display: none;
+  	}
+  }
+  @media (max-width: 991.9px) {
+ .category-button .category-button-arrow i {
+      transition: transform 0.3s;
+      transform: rotateY(0deg);
+    }
+.category-button.active .category-button-arrow i {
+      transform: rotateY(180deg);
+    }
+    .category-button {
+      background-color: {{ section.settings.button_background_color }};
+    }
+    .category-slider.category-is-active .category-icon {
+      display: none !important;
+    }
+    .category-slider.category-is-active .category-item:first-child .category-icon {
+      display: block !important;
+    }
+    .category-slider.category-is-active .category-item-link-info {
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .category-slider.category-is-active .category-item-link {
+      justify-content: center !important;
+    }
+    .category-slider.category-is-active .category-title {
+      display: none !important;
+    }
+
+  }
+  html[lang="ar"] .category-button {
+  	@media(max-width: 991.9px) {
+      left: unset;
+      right: 10px
+  	}
+  }
+  html[lang="ar"] .category-button .category-button-arrow i {
+  	transform: rotateY(180deg);
+  }
+  html[lang="ar"] .category-button.active .category-button-arrow i {
+  	transform: rotateY(0deg);
+  }
+{%- endstyle -%}
+
+<script defer>
+  document.addEventListener('DOMContentLoaded', () => {
+    function initialSwiper() {
+      const mainSlider = document.querySelector('.main-slider-section .main-slider');
+      if (!mainSlider) return;
+
+      new Swiper(mainSlider, {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        pauseOnMouseEnter: true,
+        pagination: {
+          el: '.main-slider .swiper-pagination',
+          clickable: true,
+        },
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+      });
+    }
+
+    function handelCategory() {
+      const categories = document.querySelector('.category-slider');
+      const mainSlider = document.querySelector('.main-slider');
+
+      if (!categories || !mainSlider) return;
+
+      isMobile = window.innerWidth < 992;
+      if (isMobile && categories.classList.contains('category-is-active'))
+        categories.classList.remove('category-is-active');
+      if (isMobile) mainSlider.classList.add('slider-is-full');
+    }
+
+    function toggleCategories() {
+      const button = document.querySelector('.category-button');
+      const categories = document.querySelector('.category-slider');
+      const mainSlider = document.querySelector('.main-slider');
+
+      if (button && categories && mainSlider) {
+        button.addEventListener('click', () => {
+          categories.classList.toggle('category-is-active');
+          mainSlider.classList.toggle('slider-is-full');
+          button.classList.toggle('active');
+        });
+      }
+    }
+
+    function moveButton() {
+      const nav = document.querySelector('.header__inline-menu .custom-inline-menu__wrapper');
+      const originalWrapper = document.querySelector('.main-slider-section .content');
+      const button = document.querySelector('.category-button');
+
+      if (!button || !nav || !originalWrapper) return;
+
+      const isMobile = window.innerWidth < 992;
+
+      const currentParent = button.parentElement;
+      const targetParent = isMobile ? originalWrapper : nav;
+
+      if (currentParent !== targetParent) {
+        targetParent.prepend(button);
+      }
+    }
+
+    initialSwiper();
+    toggleCategories();
+    moveButton();
+    handelCategory();
+
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(moveButton, 50);
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "main slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "button to toggle categories",
+      "id": "toggle_categories_button",
+      "default": "All categories"
+    },
+    {
+      "type": "color",
+      "label": "category item color",
+      "id": "category_item_color"
+    },
+    {
+      "type": "color",
+      "label": "button background color",
+      "id": "button_background_color"
+    },
+    {
+      "type": "color",
+      "label": "button text color",
+      "id": "button_text_color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "category item",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection_id",
+          "label": "Collection"
+        }
+      ]
+    },
+    {
+      "type": "slide",
+      "name": "slider item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Slide image",
+          "id": "slide_image"
+        },
+        {
+          "type": "image_picker",
+          "label": "Slide image for mobile",
+          "id": "slide_image_mobile"
+        },
+        {
+          "type": "text",
+          "label": "Slide title",
+          "id": "slide_title"
+        },
+        {
+          "type": "text",
+          "label": "Slide description",
+          "id": "slide_description"
+        },
+        {
+          "type": "text",
+          "label": "Slide button text",
+          "id": "slide_button_text"
+        },
+        {
+          "type": "url",
+          "label": "Slide link",
+          "id": "slide_link"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_overlay",
+          "label": "set overlay on slide"
+        },
+        {
+          "type": "color",
+          "label": "slide title color",
+          "id": "slide_title_color"
+        },
+        {
+          "type": "color",
+          "label": "slide sub title color",
+          "id": "slide_sub_title_color"
+        },
+        {
+          "type": "color",
+          "label": "slide button text color",
+          "id": "slide_button_color"
+        },
+        {
+          "type": "color",
+          "label": "slide button background color",
+          "id": "slide_button_bg_color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "main slider",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

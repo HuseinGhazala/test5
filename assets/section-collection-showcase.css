@@ -1,0 +1,40 @@
+.collection-item {
+  text-decoration: none;
+}
+
+.collection-card-placeholder-svg {
+  width: 120px;
+  height: 120px;
+}
+
+.collection-placeholder-svg {
+  width: 112px;
+  height: 112px;
+}
+
+.collection-title {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+.image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 157px;
+  height: 157px;
+  z-index: 1;
+}
+@media (max-width: 600px) {
+  .image-wrapper {
+    width: 135px;
+    height: 135px;
+  }
+}
+.image-wrapper img {
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.collection-item {
+  text-align: center;
+}

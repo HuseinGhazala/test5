@@ -1,0 +1,356 @@
+<div class="testimonials-{{ section.id }}">
+	<div class="page-width">
+		<div class="grid-container">
+			
+			<div class="testimonials-header">
+				{%- if section.settings.section_title != blank -%}
+
+					<h2 class="section-title">
+						<span class="section-title-text">
+							{{ section.settings.section_title }}
+						</span>
+					</h2>
+
+					<span class="testimonials-line">
+						{%- render 'testimonials-line' -%}
+					</span>
+					
+				{%- endif -%}
+				
+				{%- if section.settings.section_description != blank -%}
+					<p class="section-description">
+						<span>
+							{{ section.settings.section_description }}
+						</span>
+					</p>
+				{%- endif -%}
+
+			</div>
+
+			<div class="testimonials-container">
+				<div class="swiper-wrapper">
+
+					{%- if section.blocks.size > 0 -%}
+
+						{% for block in section.blocks %}
+							<div class="customer swiper-slide">
+	
+								<div class="customer-content-wrapper">
+									
+									{%- if block.settings.customer_image != blank -%}
+										<div class="customer-image">
+											{{ block.settings.customer_image | image_url: width: 1100 | image_tag: alt: block.settings.customer_name }}
+										</div>
+									{%- endif -%}
+	
+									<div class="customer-content" style="grid-column: {%- if block.settings.customer_image != blank -%} 2 / -1 {%- else -%} 1 / -1 {%- endif -%}">
+
+										{%- if block.settings.customer_name !=blank -%}
+											<div class="customer-name">
+												<h3 class="customer-name-container">
+													<span class="customer-name-text" title="{{ block.settings.customer_name }}">
+														{{ block.settings.customer_name }}
+													</span>
+													<span class="customer-content-svg">
+														{%- render 'testimonials-svg' -%}
+													</span>
+												</h3>
+											</div>
+										{%- endif -%}
+										
+										{%- if block.settings.customer_opinion != blank -%}
+											<p class="customer-opinion">
+												<span title="{{ block.settings.customer_opinion }}">
+													{{ block.settings.customer_opinion }}
+												</span>
+											</p>
+										{%- endif -%}
+
+									</div>
+								</div>
+	
+							</div>
+						{% endfor %}
+
+					{%- endif -%}
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+{%- style -%}
+	.testimonials-{{ section.id }} {
+		background-color: {{ section.settings.section_bg_color }};
+		margin-block: 50px;
+		padding-block: 40px;
+	}
+	.testimonials-{{ section.id }} .grid-container {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		@media(min-width: 1024px) {
+			gap: clamp(1.6rem, -1.8859rem + 14.8732vw, 11.5rem);
+		}
+		@media (max-width: 768px) {
+			grid-template-columns: repeat(1, minmax(0, 1fr));
+			row-gap: 20px
+		}
+	}
+	html[lang="ar"] .testimonials-{{ section.id }} .grid-container {
+		direction: rtl;
+	}
+	.testimonials-{{ section.id }} .testimonials-header {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 20px;
+	}
+	.testimonials-{{ section.id }} .testimonials-header .testimonials-line svg path {
+		fill: {{ section.settings.active_color }};
+	}
+	html[lang="ar"] .testimonials-{{ section.id }} .testimonials-header .testimonials-line svg {
+		transform: rotateY(180deg);	
+	}
+	.testimonials-{{ section.id }} .testimonials-header .section-title {
+		font-size: clamp(2.8rem, 2.1662rem + 2.7042vw, 4.6rem);
+		color: {{ section.settings.section_title_color }};
+		font-weight: 700;
+	}
+	.testimonials-{{ section.id }} .testimonials-header .section-title .section-title-text {
+		display: block;
+	}
+	.testimonials-{{ section.id }} .testimonials-header .section-description {
+		font-size: clamp(1.4rem, 1.1887rem + 0.9014vw, 2rem);
+		color: {{ section.settings.section_description_color }};
+		line-height: 1.5;
+		opacity: 0.8;
+		display: -webkit-box !important;
+		-webkit-line-clamp: 4 !important;
+		-webkit-box-orient: vertical !important;
+		overflow: hidden !important;
+		text-overflow: ellipsis !important;
+	}
+	.testimonials-{{ section.id }} .testimonials-container {
+		max-height: 470px;
+		height: 100%;
+		overflow: hidden;
+		padding: 10px;
+		@media(max-width: 480px) {
+			max-height: 400px;
+		}
+		@media (min-width: 480px) and (max-width: 768px) {
+			max-height: 450px;
+		}
+	}
+	.testimonials-{{ section.id }} .customer .customer-content-wrapper {
+		grid-column: 2 / -1;
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 16px;
+		border-radius: 4px;
+		border-left: 6px solid #00000047;
+		background-color: #fff;
+		transition: 0.5s;
+		padding-inline: 16px;
+		@media(max-width: 768px) {
+			padding-inline: 8px;
+		}
+	}
+	html[lang="ar"] .testimonials-{{ section.id }} .customer .customer-content-wrapper {
+		border-right: 6px solid #00000047;
+		border-left: none;
+	}
+	.testimonials-{{ section.id }} .testimonials-container .customer {
+		display: grid;
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+		--transform: calc((100% / 5) * -1);
+		user-select: none;
+	}
+	.testimonials-{{ section.id }} .customer.swiper-slide-next .customer-content-wrapper {
+		transform: translateX(var(--transform));
+		border-color: {{ section.settings.active_color }}
+	}
+	html[lang="ar"] .testimonials-{{ section.id }} .customer.swiper-slide-next .customer-content-wrapper {
+		border-color: {{ section.settings.active_color }};
+	}
+	html[lang="ar"] .testimonials-{{ section.id }} .customer.swiper-slide-next .customer-content-wrapper {
+		transform: translateX(calc(var(--transform) * -1));
+	}
+	@media(max-width: 768px) {
+		.testimonials-{{ section.id }} .customer .customer-content svg {
+			width: 23px;
+		}
+	}
+	.testimonials-{{ section.id }} .customer.swiper-slide-next .customer-content svg path {
+		fill: {{ section.settings.active_color }};
+	}
+	.testimonials-{{ section.id }} .testimonials-container .customer-image {
+		width: 100%;
+		border-radius: 100%;
+		overflow: hidden;
+		max-width: 100px;
+		max-height: 100px;
+		margin: auto;
+	}
+	.testimonials-{{ section.id }} .testimonials-container .customer .customer-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		border-radius: 100%;
+	}
+	html[lang="ar"] .testimonials-{{ section.id }} .testimonials-container .customer .customer-image img {
+		transform: scaleX(-1);
+	}
+	.testimonials-{{ section.id }} .testimonials-container .customer-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: self-start;
+		gap: 4px;
+	}
+	.testimonials-{{ section.id }} .testimonials-container .customer-name {
+		width: 100%;
+	}
+	.testimonials-{{ section.id }} .testimonials-container .customer-name-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: clamp(1.2rem, 0.9183rem + 1.2019vw, 2rem);
+		color: {{ section.settings.customer_name_color }};
+		font-weight: 600;
+		width: 100%;
+	}
+	.testimonials-{{ section.id }}  .customer-name .customer-name-text {
+		display: -webkit-box !important;
+		-webkit-line-clamp: 1 !important;
+		-webkit-box-orient: vertical !important;
+		overflow: hidden !important;
+		text-overflow: ellipsis !important;
+	}
+	html[lang="ar"] .testimonials-{{ section.id }}  .customer-name .customer-content-svg {
+		transform: rotateY(180deg);
+	}
+	.testimonials-{{ section.id }} .testimonials-container .customer-opinion {
+		display: -webkit-box !important;
+		-webkit-line-clamp: 3 !important;
+		-webkit-box-orient: vertical !important;
+		overflow: hidden !important;
+		text-overflow: ellipsis !important;
+		font-size: clamp(1.2rem, 1.0592rem + 0.6009vw, 1.6rem);
+		color: {{ section.settings.customer_opinion_color }};
+		line-height: 1.5;
+	}
+{%- endstyle -%}
+
+{% javascript %}
+	document.addEventListener("DOMContentLoaded", () => {
+		const swiper = new Swiper('.testimonials-container', {
+			slidesPerView: 3,
+			spaceBetween: 30,
+			direction: 'vertical',
+			watchSlidesProgress: true,
+			loop: true,
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false
+			},
+			mousewheel: { releaseOnEdges: true }
+		});
+
+		function handelTitle() {
+			const testimonialsHeader = document.querySelector(".testimonials-header .section-title");
+			const words = testimonialsHeader.innerText.split(" ");
+
+			testimonialsHeader.innerHTML = words.map((word, index) => {
+				if (index === 1) {
+					return `<span class="highlighted-word">${word}</span><br />`;
+				}
+				return word;
+			}).join(" ");
+		}
+
+		handelTitle();
+
+	});
+{% endjavascript %}
+
+{% schema %}
+	{
+		"name": "Testimonials",
+		"tag": "section",
+		"class": "section",
+		"settings": [
+			{
+				"type": "color",
+				"label": "section background color",
+				"id": "section_bg_color"
+			},
+			{
+				"type": "text",
+				"label": "Section Title",
+				"id": "section_title"
+			},
+			{
+				"type": "text",
+				"label": "Section description",
+				"id": "section_description"
+			},
+			{
+				"type": "color",
+				"label": "Section Title Color",
+				"id": "section_title_color"
+			},
+			{
+				"type": "color",
+				"label": "Section description Color",
+				"id": "section_description_color"
+			},
+			{
+				"type": "color",
+				"label": "review active color",
+				"id": "active_color"
+			},
+			{
+				"type": "color",
+				"label": "customer name Color",
+				"id": "customer_name_color"
+			},
+			{
+				"type": "color",
+				"label": "customer opinion Color",
+				"id": "customer_opinion_color"
+			}
+		],
+		"blocks": [
+			{
+				"type": "slide",
+				"name": "Testimonials",
+				"settings": [
+					{
+						"type": "image_picker",
+						"label": "Customer image",
+						"id": "customer_image"
+					},
+					{
+						"type": "text",
+						"label": "Customer name",
+						"id": "customer_name"
+					},
+					{
+						"type": "text",
+						"label": "Customer opinion",
+						"id": "customer_opinion"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Testimonials",
+				"settings": {}
+			}
+		]
+	}
+{% endschema %}

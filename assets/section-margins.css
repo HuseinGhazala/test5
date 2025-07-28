@@ -1,0 +1,9 @@
+.section {
+  margin-bottom: 55px;
+}
+
+@media screen and (min-width: 750px) {
+  .section {
+    margin-bottom: 64px;
+  }
+} 

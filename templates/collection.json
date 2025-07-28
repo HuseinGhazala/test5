@@ -9,12 +9,40 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "collection",
-      "settings": {}
+    "product-grid": {
+      "type": "product-collection-grid",
+      "settings": {
+        "enable_banner": true,
+        "banner_image": "shopify://shop_images/Frame_2581.png",
+        "title": "Grocery Store With Different Treasures",
+        "title_color": "#ffffff",
+        "button_text": "Shop Now",
+        "button_bg_color": "#ffffff",
+        "button_text_color": "#000000",
+        "button_link": "shopify://collections/collection12",
+        "banner_bg": "",
+        "banner_text_color": "#5c6c75",
+        "section_padding": "40px 40px 40px 40px",
+        "products_per_page": 16,
+        "columns_desktop": 3,
+        "enable_viewcolumn": true,
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "show_quick_add": true,
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "first_group": false,
+        "open_group": true,
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
-    "main"
+    "product-grid"
   ]
 }

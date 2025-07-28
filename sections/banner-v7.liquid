@@ -1,0 +1,376 @@
+<div data-section-id="{{ section.id }}" data-section-type="single-banner-v2">
+  <div
+    class="zen-single-banner"
+    style="
+      {% if section.settings.bg_type == 'Image' %} background-size: cover; background-image: url({% if section.settings.bg_img == blank %}https://placehold.it/1920x450.jpg{% else %}{{ section.settings.bg_img | image_url: width: 1100 }}{% endif %});
+      {% else %}background: {{ section.settings.bg_color }};{% endif %}
+    "
+  >
+    <div class="sont_style">
+      <div class="image">
+        {% if section.settings.banner_image != blank %}
+          <img
+            src="{{ section.settings.banner_image | image_url: width: 450 }}"
+            alt="{{ section.settings.banner_image.alt | escape }}"
+            width="{{ section.settings.banner_image.width }}"
+            height="{{ section.settings.banner_image.height }}"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+      <div class="texts">
+        <h3
+          class="title"
+          style="            color: {{ section.settings.text1_color }};"
+        >
+          {{ section.settings.text1 }}
+          <div class="fut_title_wrapper">
+            <span
+              class="title fut_title"
+              style="                color: {{ section.settings.text3_color }};"
+            >
+              {{- section.settings.text3 -}}
+            </span>
+            {% if section.settings.show_line %}
+              <span class="line-container">{% render 'line-style' %}</span>
+            {% endif %}
+          </div>
+        </h3>
+        <p
+          class="content"
+          style="color: {{ section.settings.text2_color }};padding: 0 10px;"
+        >
+          {{ section.settings.text2 }}
+        </p>
+
+        <countdown-timer
+          style="padding: 0 10px;"
+          date="{{ section.settings.hp_countdown }}"
+          boxed
+          separator=":"
+          expired-message="{{ 'general.countdown.expired_message' | t }}"
+
+          data-color="{{ section.settings.Countdown_color }}"
+        >
+          <span slot="days-label">{{ 'general.countdown.days' | t }}</span>
+          <span slot="hours-label">{{ 'general.countdown.hours' | t }}</span>
+          <span slot="minutes-label">{{ 'general.countdown.minutes' | t }}</span>
+          <span slot="seconds-label">{{ 'general.countdown.seconds' | t }}</span>
+        </countdown-timer>
+
+        <div class="link-text-container">
+          <a
+            class="link-text btn-gradient"
+            href="{{ section.settings.button_url }}"
+            style="
+              color: {{ section.settings.button_text_color }};
+              background-color: {{ section.settings.button_bg_color }};
+            "
+          >
+            {{ section.settings.btn_name }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- style -%}
+  .zen-single-banner {
+      background-position: center;
+      background-size: cover;
+      padding: 11px 0;
+  }
+  countdown-timer::part(time-unit) {
+      color: {{ section.settings.Countdown_color }};
+      border-color: {{ section.settings.Countdown_color }};
+      width: clamp(5.6rem, 5.3183rem + 1.2019vw, 6.4rem);
+      padding: 0px !important;
+  }
+  countdown-timer::part(value) {
+      font-size: clamp(2.4rem, 2.2592rem + 0.6009vw, 2.8rem);
+  }
+  countdown-timer::part(label) {
+      font-size: clamp(1.2rem, 1.1296rem + 0.3005vw, 1.4rem);
+  }
+  .zen-single-banner .texts {
+      /* text-align: left; */
+      max-width: 520px;
+      padding-inline: 1.2rem;
+  }
+  .zen-single-banner .texts .title {
+      line-height: 35px;
+      font-size: clamp(3.2rem, 1.8837rem + 3.5102vw, 5.5rem);
+      display: flex;
+      gap: 10px;
+      font-weight: 700;
+  }
+  @media (min-width: 480px) {
+      .zen-single-banner .texts .content {
+      font-size: 16px;
+      }
+  }
+  .zen-single-banner .texts .content {
+      font-weight: 400;
+      font-size: 18px;
+      margin-bottom: 23px;
+  }
+
+  .zen-single-banner .texts .link-text {
+      display: inline-block;
+      font-weight: 500;
+      border-radius: 4px;
+      font-size: 20px;
+      padding: 5px 32px;
+      background-color: #ffffff;
+      color: #000000;
+  }
+
+  .zen-single-banner .texts .countdown-time {
+      margin-top: 24px;
+  }
+
+  .zen-single-banner .texts .link-text-container {
+      margin-top: 35px;
+  }
+  .countdown-timer {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      justify-content: center;
+  }
+  .zen-single-banner .image {
+      margin-bottom: 20px;
+      max-width: 450px;
+  }
+  .zen-single-banner .image img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+  }
+  .sont_style {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(.5rem, -2.1239rem + 5.6637vw, 6.938rem);
+      padding-block: 30px;
+  }
+  @media (max-width: 680px) {
+      .sont_style {
+          flex-direction: column-reverse;
+          gap: 10px;
+      }
+      .zen-single-banner .texts {
+          text-align: center;
+      }
+      countdown-timer {
+          display: flex;
+          justify-content: center !important;
+      }
+      .zen-single-banner .image img {
+          width: 80%;
+      }
+      .zen-single-banner .texts .title {
+          justify-content: center;
+      }
+  }
+  .fut_title_wrapper {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+  }
+  .fut_title_wrapper .fut_title {
+      margin: 0;
+  }
+  .fut_title_wrapper .line-container {
+      position: absolute;
+      bottom: -25px;
+      @media(max-width: 768px) {
+      bottom: -10px;
+      }
+      @media (min-width: 768px) and (max-width: 992px) {
+      bottom: -15px;
+      }
+      left: 0;
+      width: 100%;
+      color: {{ section.settings.line_color }};
+  }
+  .fut_title_wrapper .line-container svg {
+      width: 100%;
+  }
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .section-{{ section.id }} .text1 {
+      color: {{ section.settings.text1_color }};
+  }
+  .section-{{ section.id }} .text3 {
+      color: {{ section.settings.text3_color }};
+      font-size: clamp(3.2rem, 1.8837rem + 3.5102vw, 7.5rem);
+  }
+  @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+  }
+  
+{%- endstyle -%}
+
+{%- javascript -%}
+  function initializeCountdownTimer() {
+    const countdown = document.querySelector('countdown-timer');
+
+    if (!countdown || !('attachShadow' in Element.prototype)) return;
+
+    const separatorElements = countdown.shadowRoot?.querySelectorAll('.separator');
+    if (!separatorElements) return;
+
+    separatorElements.forEach((span) => {
+      span.style.color = countdown.dataset.color || '#fff';
+      span.style.margin = 'unset';
+    });
+  }
+  document.addEventListener('DOMContentLoaded', () => initializeCountdownTimer());
+{%- endjavascript -%}
+
+{% schema %}
+{
+  "name": "Banner v2",
+  "tag": "section",
+  "class": "section index-section",
+  "settings": [
+    {
+      "type": "radio",
+      "id": "bg_type",
+      "label": "Select type Background",
+      "default": "Image",
+      "options": [
+        {
+          "value": "Color",
+          "label": "Background Color"
+        },
+        {
+          "value": "Image",
+          "label": "Background Image"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_img",
+      "label": "background Image"
+    },
+    {
+      "type": "header",
+      "content": "Countdown"
+    },
+    {
+      "type": "text",
+      "label": "Deadline Countdown",
+      "id": "hp_countdown",
+      "info": "Format datatime: YYYY-MM-DD",
+      "default": "03-03-2029"
+    },
+    {
+      "type": "color",
+      "id": "Countdown_color",
+      "label": "Countdown Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "header",
+      "content": "Contect"
+    },
+    {
+      "type": "text",
+      "id": "text1",
+      "default": "Save",
+      "label": "Title"
+    },
+    {
+      "type": "color",
+      "id": "text1_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "text3",
+      "default": "35% Off",
+      "label": "Featured Title"
+    },
+    {
+      "type": "color",
+      "id": "text3_color",
+      "label": "Featured Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line",
+      "label": "Show Line Under Featured Title",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Line Color",
+      "default": "#FFE75E"
+    },
+    {
+      "type": "text",
+      "id": "text2",
+      "label": "Desc",
+      "default": "Healthy food doesn't have to be boring—discover tasty options!"
+    },
+    {
+      "type": "color",
+      "id": "text2_color",
+      "label": "Description Color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "btn_name",
+      "label": "Button Name",
+      "default": "Shop now"
+    },
+    {
+      "id": "button_url",
+      "type": "url",
+      "default": "/collections/all",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner v2",
+      "category": "Single Banner"
+    }
+  ]
+}
+{% endschema %}

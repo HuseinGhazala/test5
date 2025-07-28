@@ -1,0 +1,135 @@
+.blog-placeholder-svg {
+  height: 100%;
+}
+
+@media screen and (min-width: 990px) {
+  .grid--1-col-desktop .article-card .card__content {
+    text-align: center;
+  }
+}
+
+.blog__title {
+  margin: 0;
+}
+
+.blog__posts.articles-wrapper {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 990px) {
+  .blog__posts.articles-wrapper {
+    margin-bottom: 0;
+  }
+}
+
+.blog__posts.articles-wrapper .article {
+  scroll-snap-align: start;
+}
+
+@media screen and (max-width: 749px) {
+  .blog__post.article {
+    width: calc(100% - 3rem - var(--grid-mobile-horizontal-spacing));
+  }
+}
+
+.background-secondary .blog-placeholder__content {
+  background-color: rgb(var(--color-background));
+}
+
+.blog__posts .card-wrapper {
+  width: 100%;
+}
+
+.blog__button {
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .blog__button {
+    margin-top: 5rem;
+  }
+}
+
+/* check for flexbox gap in older Safari versions */
+@supports not (inset: 10px) {
+  @media screen and (min-width: 750px) {
+    .blog__posts .article + .article {
+      margin-left: var(--grid-desktop-horizontal-spacing);
+    }
+  }
+}
+
+.blog .description {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: center;  
+  margin-bottom: 16px ;
+  padding: 0 10px;
+}
+.blog .title-wrapper--no-top-margin{  
+  margin-bottom: 10px ;
+  justify-content: center;
+}
+
+.blog .blog__title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  text-align: center;
+}
+.blog .card__heading {
+  font-weight: 600;
+  font-size: 16.47px;
+  line-height: 100%;
+}
+.blog  .article-card__excerpt{
+  font-weight: 300;
+  font-size: 13.18px;
+  line-height: 130%;
+  width: 100%;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  
+} 
+.blog .article-card__info {
+  display: flex;  
+  align-items: center;
+  gap: 10;
+  margin-bottom: 10px;
+}
+.blog .article-card__info  span{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 400;
+  font-size: 11.53px;
+  line-height: 100%;
+}
+.blog .see_more{
+  display: none;
+}
+
+@media(min-width: 767px){
+  .blog .description {
+    font-size: 16px;
+  margin-bottom: 24px ;
+  }
+  .blog .blog__title {
+    font-size: 28px;
+    margin-bottom: 12px ;
+  }
+  .blog .card__heading {
+    font-size: 20px;
+    margin: 15px 0;
+  }
+  .blog  .article-card__excerpt{
+    font-size: 16px;
+  }
+  .blog .article-card__info  span{
+    font-size: 14px;
+  }
+}
